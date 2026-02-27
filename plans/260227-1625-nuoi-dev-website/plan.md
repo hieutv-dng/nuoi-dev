@@ -38,7 +38,7 @@ Website cá nhân kêu gọi bảo trợ/hỗ trợ developer. Lấy cảm hứn
 |---|-------|--------|------|
 | 1 | Project Setup & Design System | ✅ Done | [phase-01](./phase-01-project-setup.md) |
 | 2 | Hero + About Sections | ✅ Done | [phase-02](./phase-02-hero-about.md) |
-| 3 | How It Works + Impact + Dev Stories | ⬜ Pending | [phase-03](./phase-03-content-sections.md) |
+| 3 | How It Works + Impact + Dev Stories | ✅ Done | [phase-03](./phase-03-content-sections.md) |
 | 4 | CTA + Footer + Polish | ⬜ Pending | [phase-04](./phase-04-cta-footer-polish.md) |
 
 ## Sections (7 sections)

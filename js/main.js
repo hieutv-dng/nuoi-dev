@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initScrollAnimations();
+  initImpactCounters();
 });
 
 /* --- Navbar scroll effect & mobile toggle --- */
@@ -57,4 +58,49 @@ function initScrollAnimations() {
   );
 
   elements.forEach(el => observer.observe(el));
+}
+
+/* --- Impact counter animation (scroll-triggered) --- */
+function initImpactCounters() {
+  const counters = document.querySelectorAll('.impact-number');
+  if (counters.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  counters.forEach(el => observer.observe(el));
+}
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease-out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(eased * target);
+
+    el.textContent = current.toLocaleString('vi-VN') + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = target.toLocaleString('vi-VN') + suffix;
+    }
+  }
+
+  requestAnimationFrame(update);
 }

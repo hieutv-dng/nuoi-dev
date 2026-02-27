@@ -1,1 +1,61 @@
-/* Impact Section — Phase 03 */
+/* ============================================
+   Impact Section — Nuôi Dev
+   ============================================ */
+
+.impact {
+  background: var(--bg-secondary);
+}
+
+/* 4-column grid */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.impact-card {
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+
+.impact-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Counter number — big gradient text */
+.impact-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-extrabold);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.impact-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .impact-number {
+    font-size: var(--text-3xl);
+  }
+}
