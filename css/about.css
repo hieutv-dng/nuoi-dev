@@ -1,1 +1,161 @@
-/* About Section — Phase 02 */
+/* ============================================
+   About Section — Nuôi Dev
+   ============================================ */
+
+.about {
+  background: var(--bg-secondary);
+}
+
+/* 2-column layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* Text side */
+.about-text .section-label {
+  margin-bottom: var(--space-sm);
+}
+
+.about-text .section-title {
+  margin-bottom: var(--space-md);
+}
+
+.about-description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.about-description strong {
+  color: var(--text-primary);
+  font-weight: var(--font-semibold);
+}
+
+/* Illustration side — code-themed visual */
+.about-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-illustration {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4/3;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Grid pattern on illustration */
+.about-illustration::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Code bracket decoration */
+.about-illustration::after {
+  content: '{ }';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 4rem;
+  font-weight: var(--font-bold);
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.3em;
+}
+
+/* Highlight cards row */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.about-card {
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.about-card-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.about-card-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.about-card-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-visual {
+    order: -1;
+  }
+
+  .about-illustration {
+    max-width: 300px;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-card {
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--space-md);
+    align-items: start;
+  }
+
+  .about-card-icon {
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .about-card-title {
+    align-self: end;
+    margin-bottom: var(--space-xs);
+  }
+
+  .about-card-desc {
+    grid-column: 2;
+  }
+}
