@@ -22,7 +22,7 @@ created: 2026-03-03T16:00:00+07:00
 | # | Phase | Status | Files |
 |---|-------|--------|-------|
 | 1 | [HTML Structure](phase-01-html-structure.md) | ✅ | `index.html` |
-| 2 | [CSS Styling](phase-02-css-styling.md) | ⬜ | `css/dev-register.css` |
+| 2 | [CSS Styling](phase-02-css-styling.md) | ✅ | `css/dev-register.css` |
 | 3 | [JS Form Logic](phase-03-js-form-logic.md) | ⬜ | `js/dev-register.js`, `js/main.js` |
 
 ## Architecture
