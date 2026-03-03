@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nuôi Dev — Bảo trợ Developer Việt Nam</title>
   <meta name="description" content="Nuôi Dev — Nền tảng bảo trợ và hỗ trợ developer Việt Nam phát triển sự nghiệp công nghệ.">
+  <meta name="keywords" content="Nuôi Dev, sponsor developer, mentoring, cộng đồng lập trình viên, developer Việt Nam">
+  <meta name="author" content="Nuôi Dev">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nuôi Dev — Bảo trợ Developer Việt Nam">
+  <meta property="og:description" content="Kết nối sponsor và developer Việt Nam để học tập, mentoring và phát triển sự nghiệp công nghệ.">
+  <meta property="og:url" content="https://nuoi.dev/">
+  <meta property="og:image" content="https://nuoi.dev/assets/images/og-image.png">
+  <meta property="og:image:alt" content="Nuoi Dev - Bao tro va mentoring cho developer Viet Nam">
+  <meta property="og:locale" content="vi_VN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nuôi Dev — Bảo trợ Developer Việt Nam">
+  <meta name="twitter:description" content="Cùng nhau nuôi dưỡng tài năng công nghệ Việt Nam qua bảo trợ và mentoring.">
+  <meta name="twitter:image" content="https://nuoi.dev/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="Nuoi Dev - Bao tro va mentoring cho developer Viet Nam">
+  <meta name="theme-color" content="#6366f1">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
 
   <!-- Google Fonts: Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +40,7 @@
   <link rel="stylesheet" href="css/how-it-works.css">
   <link rel="stylesheet" href="css/impact.css">
   <link rel="stylesheet" href="css/dev-stories.css">
+  <link rel="stylesheet" href="css/dev-register.css">
   <link rel="stylesheet" href="css/cta.css">
   <link rel="stylesheet" href="css/footer.css">
 </head>
@@ -29,7 +49,7 @@
   <!-- ====== Navbar ====== -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#" class="navbar-logo">
+      <a href="#hero" class="navbar-logo">
         <span class="logo-bracket">{</span>
         <span class="logo-text">nuôi.dev</span>
         <span class="logo-bracket">}</span>
@@ -40,7 +60,7 @@
         <a href="#how-it-works">Cách thức</a>
         <a href="#impact">Tác động</a>
         <a href="#stories">Dev Stories</a>
-        <a href="#" class="btn btn-primary navbar-cta">Tham gia ngay</a>
+        <a href="#cta" class="btn btn-primary navbar-cta">Tham gia ngay</a>
       </div>
 
       <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
@@ -65,7 +85,7 @@
           Nền tảng kết nối cộng đồng bảo trợ developer Việt Nam. Mỗi sự đóng góp là một bước tiến cho thế hệ lập trình viên mới.
         </p>
         <div class="hero-cta">
-          <a href="#" class="btn-hero-primary">🚀 Tham gia ngay</a>
+          <a href="#cta" class="btn-hero-primary">🚀 Tham gia ngay</a>
           <a href="#about" class="btn-hero-secondary">Tìm hiểu thêm ↓</a>
         </div>
         <div class="hero-stats">
@@ -330,17 +350,225 @@
     </div>
   </section>
 
+  <!-- ====== Dev Register Section ====== -->
+  <section class="section dev-register" id="dev-register">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">// đăng ký dev</span>
+        <h2 class="section-title">Đăng ký tham gia Nuôi Dev</h2>
+        <p class="section-subtitle">
+          Điền thông tin để trở thành dev được bảo trợ. 
+          Chúng tôi sẽ liên hệ trong 24 giờ.
+        </p>
+      </div>
+
+      <div class="register-form-wrap glass-card fade-in-up">
+        <form id="dev-register-form" novalidate>
+          <!-- Row 1: Name + Email -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-name">Họ và tên <span class="required">*</span></label>
+              <input type="text" id="reg-name" name="name" 
+                     placeholder="Nguyễn Văn A" required minlength="2"
+                     aria-required="true">
+              <span class="form-error" id="reg-name-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-email">Email <span class="required">*</span></label>
+              <input type="email" id="reg-email" name="email" 
+                     placeholder="email@example.com" required
+                     aria-required="true">
+              <span class="form-error" id="reg-email-error"></span>
+            </div>
+          </div>
+
+          <!-- Row 2: GitHub + Portfolio -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-github">GitHub username <span class="required">*</span></label>
+              <input type="text" id="reg-github" name="github" 
+                     placeholder="username" required
+                     aria-required="true">
+              <span class="form-error" id="reg-github-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-portfolio">Portfolio link</label>
+              <input type="url" id="reg-portfolio" name="portfolio" 
+                     placeholder="https://portfolio.dev">
+              <span class="form-error" id="reg-portfolio-error"></span>
+            </div>
+          </div>
+
+          <!-- Skills (tag selection) -->
+          <div class="form-group form-group-full">
+            <label>Kỹ năng chính <span class="required">*</span> <span class="skill-counter" id="reg-skills-counter">0/5</span></label>
+            <div class="skill-tags-select" id="reg-skills" 
+                 role="group" aria-label="Chọn kỹ năng (tối đa 5)">
+              <!-- Frontend -->
+              <button type="button" class="tag-option" data-skill="HTML/CSS">HTML/CSS</button>
+              <button type="button" class="tag-option" data-skill="JavaScript">JavaScript</button>
+              <button type="button" class="tag-option" data-skill="React">React</button>
+              <button type="button" class="tag-option" data-skill="Vue.js">Vue.js</button>
+              <button type="button" class="tag-option" data-skill="Angular">Angular</button>
+              <button type="button" class="tag-option" data-skill="Next.js">Next.js</button>
+              <!-- Backend -->
+              <button type="button" class="tag-option" data-skill="Node.js">Node.js</button>
+              <button type="button" class="tag-option" data-skill="Python">Python</button>
+              <button type="button" class="tag-option" data-skill="Java">Java</button>
+              <button type="button" class="tag-option" data-skill="Go">Go</button>
+              <button type="button" class="tag-option" data-skill="PHP">PHP</button>
+              <button type="button" class="tag-option" data-skill="Ruby">Ruby</button>
+              <!-- Mobile -->
+              <button type="button" class="tag-option" data-skill="Flutter">Flutter</button>
+              <button type="button" class="tag-option" data-skill="React Native">React Native</button>
+              <button type="button" class="tag-option" data-skill="Swift">Swift</button>
+              <button type="button" class="tag-option" data-skill="Kotlin">Kotlin</button>
+              <!-- Other -->
+              <button type="button" class="tag-option" data-skill="DevOps">DevOps</button>
+              <button type="button" class="tag-option" data-skill="Database">Database</button>
+              <button type="button" class="tag-option" data-skill="AI/ML">AI/ML</button>
+              <button type="button" class="tag-option" data-skill="UI/UX">UI/UX</button>
+              <button type="button" class="tag-option" data-skill="Blockchain">Blockchain</button>
+            </div>
+            <span class="form-error" id="reg-skills-error"></span>
+          </div>
+
+          <!-- Row 3: Goal + Experience + Education -->
+          <div class="form-row form-row-3">
+            <div class="form-group">
+              <label for="reg-goal">Mục tiêu <span class="required">*</span></label>
+              <select id="reg-goal" name="goal" required aria-required="true">
+                <option value="">— Chọn mục tiêu —</option>
+                <option value="upskill">📚 Học kỹ năng mới</option>
+                <option value="mentor">🧭 Tìm mentor</option>
+                <option value="job">💼 Tìm việc làm / internship</option>
+                <option value="portfolio">🚀 Xây dựng portfolio</option>
+                <option value="community">🤝 Kết nối cộng đồng</option>
+              </select>
+              <span class="form-error" id="reg-goal-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-experience">Kinh nghiệm <span class="required">*</span></label>
+              <select id="reg-experience" name="experience" required aria-required="true">
+                <option value="">— Chọn —</option>
+                <option value="beginner">🌱 Mới bắt đầu (< 1 năm)</option>
+                <option value="junior">📖 Junior (1-2 năm)</option>
+                <option value="mid">💻 Mid-level (2-4 năm)</option>
+                <option value="senior">⭐ Senior (4+ năm)</option>
+              </select>
+              <span class="form-error" id="reg-experience-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-education">Học vấn <span class="optional">(tuỳ chọn)</span></label>
+              <select id="reg-education" name="education">
+                <option value="">— Chọn —</option>
+                <option value="student">🎓 Đang học ĐH/CĐ</option>
+                <option value="graduated">🎓 Đã tốt nghiệp</option>
+                <option value="selftaught">📚 Tự học</option>
+                <option value="bootcamp">🏫 Bootcamp / Online</option>
+              </select>
+              <span class="form-error" id="reg-education-error"></span>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group form-group-full">
+            <label for="reg-message">Lời nhắn <span class="optional">(tuỳ chọn)</span></label>
+            <textarea id="reg-message" name="message" rows="3" 
+                      maxlength="500"
+                      placeholder="Chia sẻ thêm về bạn hoặc mục tiêu..."></textarea>
+            <div class="textarea-counter">
+              <span id="reg-message-count">0</span>/500
+            </div>
+            <span class="form-error" id="reg-message-error"></span>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-submit">
+              🚀 Gửi đăng ký
+            </button>
+          </div>
+
+          <!-- Privacy note -->
+          <p class="form-privacy">
+            🔒 Thông tin của bạn được bảo mật và chỉ sử dụng cho mục đích xét duyệt.
+          </p>
+        </form>
+
+        <!-- Inline reset area (hidden by default) -->
+        <div class="register-success" id="register-success" hidden>
+          <div class="success-icon">🎉</div>
+          <h3 class="success-title">Cảm ơn bạn đã đăng ký!</h3>
+          <p class="success-text">
+            Chúng tôi sẽ liên hệ trong 24 giờ để xác minh hồ sơ.
+          </p>
+          <button type="button" class="btn btn-outline btn-reset" id="btn-register-again">
+            Đăng ký thêm
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== CTA Section ====== -->
-  <section class="section" id="cta">
-    <!-- Phase 04 -->
+  <section class="section cta-section fade-in-up" id="cta">
+    <div class="container">
+      <div class="cta-content">
+        <span class="section-label cta-label">// đồng hành cùng cộng đồng</span>
+        <h2 class="cta-title">Sẵn sàng nuôi dưỡng thế hệ developer tiếp theo?</h2>
+        <p class="cta-subtitle">
+          Trở thành sponsor để hỗ trợ tài năng trẻ hoặc đăng ký làm dev để nhận mentoring, tài nguyên học tập và cơ hội nghề nghiệp.
+        </p>
+        <div class="cta-actions">
+          <a href="#" class="btn cta-button-primary" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt">Trở thành Sponsor</a>
+          <a href="#" class="btn cta-button-secondary" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt">Đăng ký Dev</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ====== Footer ====== -->
-  <footer id="footer">
-    <!-- Phase 04 -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand fade-in-up">
+          <a href="#hero" class="footer-logo" aria-label="Nuôi Dev homepage">
+            <span class="logo-bracket">{</span>
+            <span class="logo-text">nuôi.dev</span>
+            <span class="logo-bracket">}</span>
+          </a>
+          <p class="footer-tagline">Nền tảng kết nối sponsor và developer Việt Nam cùng phát triển bền vững.</p>
+        </div>
+
+        <nav class="footer-nav fade-in-up" aria-label="Footer Navigation">
+          <a href="#about">Giới thiệu</a>
+          <a href="#how-it-works">Cách thức</a>
+          <a href="#impact">Tác động</a>
+          <a href="#stories">Dev Stories</a>
+          <a href="#cta">Sponsor</a>
+        </nav>
+
+        <div class="footer-social fade-in-up" aria-label="Social Links">
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="GitHub">GH</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="Facebook">FB</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="Email">@</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="X">X</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="current-year">2026</span> Nuôi Dev. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
+  <!-- Toast notification -->
+  <div class="toast-container" id="toast-container"></div>
+
   <!-- JS -->
+  <script src="js/dev-register.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
