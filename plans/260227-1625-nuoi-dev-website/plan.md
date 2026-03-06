@@ -1,7 +1,7 @@
 ---
 title: "Nuôi Dev - Website Landing Page"
 description: "Website bảo trợ developer, lấy cảm hứng từ nuoiem.com, phong cách tech/modern"
-status: planning
+status: completed
 priority: high
 effort: medium
 branch: master
@@ -39,7 +39,7 @@ Website cá nhân kêu gọi bảo trợ/hỗ trợ developer. Lấy cảm hứn
 | 1 | Project Setup & Design System | ✅ Done | [phase-01](./phase-01-project-setup.md) |
 | 2 | Hero + About Sections | ✅ Done | [phase-02](./phase-02-hero-about.md) |
 | 3 | How It Works + Impact + Dev Stories | ✅ Done | [phase-03](./phase-03-content-sections.md) |
-| 4 | CTA + Footer + Polish | ⬜ Pending | [phase-04](./phase-04-cta-footer-polish.md) |
+| 4 | CTA + Footer + Polish | ✅ Done | [phase-04](./phase-04-cta-footer-polish.md) |
 
 ## Sections (7 sections)
 
@@ -63,3 +63,4 @@ Website cá nhân kêu gọi bảo trợ/hỗ trợ developer. Lấy cảm hứn
 - ✅ Mở index.html trực tiếp, không cần server
 - ✅ Hero background: CSS gradient animation (không particles)
 - ✅ Footer social: placeholder icons (GitHub, FB, Email, LinkedIn, X), điền link sau
+- ✅ Phase 04 shipped: CTA + footer + polish (smooth scroll, reveal animations, SEO/performance/mobile check)
