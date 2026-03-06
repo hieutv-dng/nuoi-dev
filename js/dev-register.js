@@ -135,8 +135,10 @@ function showToast(message, type = 'success') {
   setTimeout(() => toast.remove(), 3500);
 }
 
+const API_BASE = 'http://localhost:3000';
+
 function initFormSubmit(form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
@@ -155,12 +157,66 @@ function initFormSubmit(form) {
       return;
     }
 
-    // Success flow
-    showToast('🎉 Đăng ký thành công! Chúng tôi sẽ liên hệ trong 24h.');
-    form.hidden = true;
-    document.getElementById('register-success').hidden = false;
+    // Collect skills from active tags
+    const skills = Array.from(document.querySelectorAll('.tag-option.active'))
+      .map(tag => tag.dataset.skill);
+
+    // Build request payload
+    const payload = {
+      name: formData.get('name')?.trim(),
+      email: formData.get('email')?.trim(),
+      github: formData.get('github')?.trim(),
+      skills,
+      goal: formData.get('goal'),
+      experience: formData.get('experience'),
+    };
+
+    // Optional fields
+    const portfolio = formData.get('portfolio')?.trim();
+    if (portfolio) payload.portfolio = portfolio;
+
+    const education = formData.get('education');
+    if (education) payload.education = education;
+
+    const message = formData.get('message')?.trim();
+    if (message) payload.message = message;
+
+    // Submit to backend API
+    const submitBtn = form.querySelector('.btn-submit');
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Đang gửi...';
+
+      const response = await fetch(`${API_BASE}/api/dev-registrations`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        // Handle validation errors from backend
+        const errorMsg = Array.isArray(result.message)
+          ? result.message[0]
+          : result.message || 'Có lỗi xảy ra, vui lòng thử lại';
+        showToast(errorMsg, 'error');
+        return;
+      }
+
+      // Success
+      showToast('🎉 Đăng ký thành công! Chúng tôi sẽ liên hệ trong 24h.');
+      form.hidden = true;
+      document.getElementById('register-success').hidden = false;
+    } catch (error) {
+      showToast('Không thể kết nối server. Vui lòng thử lại sau.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '🚀 Gửi đăng ký';
+    }
   });
 }
+
 
 function initRegisterAgain() {
   const btn = document.getElementById('btn-register-again');

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Quản lý đăng ký Dev | Nuôi Dev</title>
+  <meta name="description" content="Trang quản lý đăng ký developer cho Nuôi Dev.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/admin-dev-registrations.css">
+</head>
+<body>
+
+  <!-- ====== Admin Navbar ====== -->
+  <nav class="admin-navbar" id="admin-navbar">
+    <div class="admin-container">
+      <a href="index.html" class="admin-logo" aria-label="Về trang chủ">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">nuôi.dev</span>
+        <span class="logo-bracket">}</span>
+      </a>
+      <h1 class="admin-title">Quản lý đăng ký Dev</h1>
+      <a href="index.html" class="admin-back-link">← Trang chủ</a>
+    </div>
+  </nav>
+
+  <!-- Spacer -->
+  <div style="height: var(--navbar-height);"></div>
+
+  <main class="admin-main">
+    <div class="admin-container">
+
+      <!-- ====== Stats Cards ====== -->
+      <section class="admin-stats" id="admin-stats">
+        <div class="stat-card stat-total" data-filter="all">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number" id="stat-total">0</div>
+          <div class="stat-label">Tổng đăng ký</div>
+        </div>
+        <div class="stat-card stat-pending" data-filter="pending">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-number" id="stat-pending">0</div>
+          <div class="stat-label">Chờ duyệt</div>
+        </div>
+        <div class="stat-card stat-approved" data-filter="approved">
+          <div class="stat-icon">✅</div>
+          <div class="stat-number" id="stat-approved">0</div>
+          <div class="stat-label">Đã duyệt</div>
+        </div>
+        <div class="stat-card stat-rejected" data-filter="rejected">
+          <div class="stat-icon">❌</div>
+          <div class="stat-number" id="stat-rejected">0</div>
+          <div class="stat-label">Từ chối</div>
+        </div>
+      </section>
+
+      <!-- ====== Filter Bar ====== -->
+      <section class="admin-filters" id="admin-filters">
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">Tất cả</button>
+          <button class="filter-pill" data-filter="pending">⏳ Chờ duyệt</button>
+          <button class="filter-pill" data-filter="approved">✅ Đã duyệt</button>
+          <button class="filter-pill" data-filter="rejected">❌ Từ chối</button>
+        </div>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="search-input" placeholder="Tìm theo tên, email, GitHub..." autocomplete="off">
+        </div>
+      </section>
+
+      <!-- ====== Cards Grid ====== -->
+      <section class="admin-cards" id="cards-container">
+        <!-- Cards rendered by JS -->
+      </section>
+
+      <!-- ====== Empty State ====== -->
+      <div class="admin-empty" id="empty-state" hidden>
+        <div class="empty-icon">📭</div>
+        <h3 class="empty-title">Không có đăng ký nào</h3>
+        <p class="empty-text">Chưa có đăng ký nào phù hợp với bộ lọc hiện tại.</p>
+      </div>
+
+      <!-- ====== Loading State ====== -->
+      <div class="admin-loading" id="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Đang tải dữ liệu...</p>
+      </div>
+
+      <!-- ====== Pagination ====== -->
+      <nav class="admin-pagination" id="pagination" aria-label="Phân trang">
+        <!-- Rendered by JS -->
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- ====== Detail Modal ====== -->
+  <div class="modal-overlay" id="detail-modal" hidden>
+    <div class="modal-content glass-card">
+      <button class="modal-close" id="modal-close" aria-label="Đóng">✕</button>
+      <div class="modal-header">
+        <div class="modal-avatar" id="modal-avatar"></div>
+        <div class="modal-info">
+          <h2 class="modal-name" id="modal-name"></h2>
+          <span class="modal-status-badge" id="modal-status"></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-field">
+          <span class="modal-label">📧 Email</span>
+          <span class="modal-value" id="modal-email"></span>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">🐙 GitHub</span>
+          <span class="modal-value" id="modal-github"></span>
+        </div>
+        <div class="modal-field" id="modal-portfolio-row">
+          <span class="modal-label">🌐 Portfolio</span>
+          <span class="modal-value" id="modal-portfolio"></span>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">🎯 Mục tiêu</span>
+          <span class="modal-value" id="modal-goal"></span>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">💼 Kinh nghiệm</span>
+          <span class="modal-value" id="modal-experience"></span>
+        </div>
+        <div class="modal-field" id="modal-education-row">
+          <span class="modal-label">🎓 Học vấn</span>
+          <span class="modal-value" id="modal-education"></span>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">🛠️ Kỹ năng</span>
+          <div class="modal-skills" id="modal-skills"></div>
+        </div>
+        <div class="modal-field" id="modal-message-row">
+          <span class="modal-label">💬 Lời nhắn</span>
+          <p class="modal-message" id="modal-message"></p>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">📅 Ngày đăng ký</span>
+          <span class="modal-value" id="modal-date"></span>
+        </div>
+      </div>
+      <div class="modal-actions" id="modal-actions">
+        <!-- Action buttons rendered by JS based on status -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Toast Container ====== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JS -->
+  <script src="js/admin-dev-registrations.js"></script>
+</body>
+</html>
