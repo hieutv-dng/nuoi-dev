@@ -4,8 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initSmoothScroll();
   initScrollAnimations();
   initImpactCounters();
+  initFooterYear();
+  initDevRegisterForm();
 });
 
 /* --- Navbar scroll effect & mobile toggle --- */
@@ -38,6 +41,32 @@ function initNavbar() {
       });
     });
   }
+}
+
+/* --- Smooth scroll for internal navigation links --- */
+function initSmoothScroll() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const anchors = document.querySelectorAll('a[href^="#"]');
+
+  anchors.forEach(anchor => {
+    const hash = anchor.getAttribute('href');
+    if (!hash || hash === '#') return;
+
+    anchor.addEventListener('click', (event) => {
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
+
+      if (window.history?.replaceState) {
+        window.history.replaceState(null, '', hash);
+      }
+    });
+  });
 }
 
 /* --- Intersection Observer for fade-in animations --- */
@@ -103,4 +132,11 @@ function animateCounter(el) {
   }
 
   requestAnimationFrame(update);
+}
+
+/* --- Footer current year --- */
+function initFooterYear() {
+  const yearNode = document.getElementById('current-year');
+  if (!yearNode) return;
+  yearNode.textContent = String(new Date().getFullYear());
 }
