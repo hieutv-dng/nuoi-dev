@@ -1,0 +1,3511 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.agents/
+  rules/
+    development-rules.md
+    documentation-management.md
+    orchestration-protocol.md
+    primary-workflow.md
+    project-instructions.md
+    team-coordination-rules.md
+assets/
+  images/
+    .gitkeep
+    apple-touch-icon.png
+    favicon-192.png
+    favicon-32.png
+    favicon.svg
+    og-image.png
+    og-image.svg
+css/
+  about.css
+  cta.css
+  design-tokens.css
+  dev-stories.css
+  footer.css
+  globals.css
+  hero.css
+  how-it-works.css
+  impact.css
+  navbar.css
+  reset.css
+js/
+  main.js
+plans/
+  260227-1625-nuoi-dev-website/
+    phase-01-project-setup.md
+    phase-02-hero-about.md
+    phase-03-content-sections.md
+    phase-04-cta-footer-polish.md
+    plan.md
+  reports/
+    brainstormer-260227-1637-validate-nuoi-dev-website.md
+    project-manager-20260227-phase-04-finalize.md
+    reviewer-20260227-phase-04-cta-footer-polish-final.md
+    reviewer-20260227-phase-04-cta-footer-polish-followup.md
+    reviewer-20260227-phase-04-cta-footer-polish.md
+    tester-20260227-phase-04-cta-footer-polish-final.md
+    tester-20260227-phase-04-cta-footer-polish.md
+  templates/
+    bug-fix-template.md
+    feature-implementation-template.md
+    refactor-template.md
+    template-usage-guide.md
+index.html
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".agents/rules/development-rules.md">
+---
+trigger: always_on
+---
+
+# Development Rules
+
+* Always follow these principles: **YAGNI** (You Aren't Gonna Need It) — **KISS** (Keep It Simple, Stupid) — **DRY** (Don't Repeat Yourself)
+* Activate relevant skills from the skills catalog as needed during the process
+
+## General
+
+* **File Naming**: Use kebab-case with meaningful names that describe the file's purpose — doesn't matter if long, LLMs should understand the purpose from the name alone
+* **File Size Management**: Keep individual code files under 200 lines for optimal context management
+  * Split large files into smaller, focused components/modules
+  * Use composition over inheritance for complex widgets
+  * Extract utility functions into separate modules
+  * Create dedicated service classes for business logic
+* Use `docs-seeker` skill for exploring latest docs of plugins/packages if needed
+* Use `gh` command to interact with GitHub features if needed
+* Use `psql` command to query Postgres database for debugging if needed
+* Use `ai-multimodal` skill for describing details of images, videos, documents, etc.
+* Use `sequential-thinking` skill and `debugging` skill for analyzing code, debugging, etc.
+* Follow the codebase structure and code standards in `./docs` during implementation
+* **Do not** simulate or mock the implementation — always implement real code
+
+## Code Quality Guidelines
+
+* Read and follow codebase structure and code standards in `./docs`
+* Don't be too harsh on linting, but **make sure there are no syntax errors and code is compilable**
+* Prioritize functionality and readability over strict style enforcement and code formatting
+* Use reasonable code quality standards that enhance developer productivity
+* Use try-catch error handling & cover security standards
+* Review code after every implementation
+
+## Pre-commit/Push Rules
+
+* Run linting before commit
+* Run tests before push (DO NOT ignore failed tests just to pass the build or CI)
+* Keep commits focused on actual code changes
+* **DO NOT** commit and push any confidential information (dotenv files, API keys, database credentials, etc.)
+* Create clean, professional commit messages without AI references. Use conventional commit format.
+
+## Code Implementation
+
+* Write clean, readable, and maintainable code
+* Follow established architectural patterns
+* Implement features according to specifications
+* Handle edge cases and error scenarios
+* **DO NOT** create new enhanced files — update existing files directly
+</file>
+
+<file path=".agents/rules/documentation-management.md">
+---
+trigger: always_on
+---
+
+# Project Documentation Management
+
+## Roadmap & Changelog Maintenance
+
+* **Project Roadmap** (`./docs/development-roadmap.md`): Living document tracking project phases, milestones, and progress
+* **Project Changelog** (`./docs/project-changelog.md`): Detailed record of all significant changes, features, and fixes
+* **System Architecture** (`./docs/system-architecture.md`): Technical architecture documentation
+* **Code Standards** (`./docs/code-standards.md`): Coding standards and conventions
+
+## Automatic Updates Required
+
+* **After Feature Implementation**: Update roadmap progress status and changelog entries
+* **After Major Milestones**: Review and adjust roadmap phases, update success metrics
+* **After Bug Fixes**: Document fixes in changelog with severity and impact
+* **After Security Updates**: Record security improvements and version updates
+* **Weekly Reviews**: Update progress percentages and milestone statuses
+
+## Documentation Triggers
+
+Update these documents when:
+* A development phase status changes (e.g., from "In Progress" to "Complete")
+* Major features are implemented or released
+* Significant bugs are resolved or security patches applied
+* Project timeline or scope adjustments are made
+* External dependencies or breaking changes occur
+
+## Update Protocol
+
+1. **Before Updates**: Always read current roadmap and changelog status
+2. **During Updates**: Maintain version consistency and proper formatting
+3. **After Updates**: Verify links, dates, and cross-references are accurate
+4. **Quality Check**: Ensure updates align with actual implementation progress
+
+## Report Output Convention (MANDATORY)
+
+All reports MUST follow this naming convention:
+
+* **Reports**: `./plans/reports/{type}-{YYMMDD}-{HHMM}-{slug}.md`
+* **Plans**: `./plans/{YYMMDD}-{HHMM}-{slug}/`
+
+| Token | Value | Example |
+|---|---|---|
+| `{type}` | Report category | See mapping table below |
+| `{YYMMDD}` | Current date | `260225` |
+| `{HHMM}` | Current time | `1430` |
+| `{slug}` | Kebab-case task description | `fix-auth-token-expiry` |
+
+### Skill → Report Type Mapping
+
+| Report Type | Skill | When to use |
+|---|---|---|
+| `researcher` | research | Technical research, solution analysis |
+| `scout` | scout | Codebase scouting, file discovery |
+| `debugger` | debug / debugging | Bug investigation, root cause analysis |
+| `tester` | test | Test execution, QA reports |
+| `code-reviewer` | code-review | Code review, codebase audit |
+| `brainstormer` | brainstorm | Brainstorm, ideation, architecture decisions |
+| `cook` | cook | Implementation progress reports |
+
+> **Fallback rule:** Each skill defines its own `## Report Output` section with default path. If `## Naming` is injected by hooks, use that pattern instead.
+
+Rules:
+* Always create `./plans/reports/` directory if it doesn't exist
+* Research reports: ≤150 lines
+* `plan.md` must include YAML frontmatter: title, description, status, priority, effort, branch, tags, created
+* Each skill's `## Report Output` section specifies its report type and default path
+
+## Plans
+
+### Plan Location
+Save plans in `./plans` directory: `plans/{YYMMDD}-{HHMM}-{slug}/`
+
+### File Organization
+
+```
+plans/{YYMMDD}-{HHMM}-{slug}/
+├── research/
+│   ├── researcher-XX-{topic}.md        # ≤150 lines each
+│   └── ...
+├── reports/
+│   ├── scout-{slug}.md
+│   └── ...
+├── plan.md                              # Overview (under 80 lines)
+├── phase-01-{name}.md
+├── phase-02-{name}.md
+└── ...
+```
+
+### Overview Plan (plan.md)
+* Keep generic and under 80 lines
+* List each phase with status/progress
+* Link to detailed phase files
+* Key dependencies
+
+### Phase Files (phase-XX-name.md)
+Follow the `./docs/development-rules.md` file. Each phase file should contain:
+
+* **Context Links** — Links to related reports, files, documentation
+* **Overview** — Priority, current status, brief description
+* **Key Insights** — Important findings from research, critical considerations
+* **Requirements** — Functional and non-functional requirements
+* **Architecture** — System design, component interactions, data flow
+* **Related Code Files** — Files to modify, create, delete
+* **Implementation Steps** — Detailed, numbered steps with specific instructions
+* **Todo List** — Checkbox list for tracking
+* **Success Criteria** — Definition of done, validation methods
+* **Risk Assessment** — Potential issues, mitigation strategies
+* **Security Considerations** — Auth/authorization, data protection
+* **Next Steps** — Dependencies, follow-up tasks
+</file>
+
+<file path=".agents/rules/orchestration-protocol.md">
+---
+trigger: always_on
+---
+
+# Orchestration Protocol
+
+## Sequential Chaining
+
+Chain tasks when they have dependencies or require outputs from previous steps:
+* **Planning → Implementation → Testing → Review**: Use for feature development
+* **Research → Design → Code → Documentation**: Use for new system components
+* Each step completes fully before the next begins
+* Pass context and outputs between steps in the chain
+
+## Parallel Execution
+
+Execute multiple independent tasks simultaneously:
+* **Code + Tests + Docs**: When implementing separate, non-conflicting components
+* **Multiple Feature Branches**: Different tasks working on isolated features
+* **Cross-platform Development**: iOS and Android specific implementations
+* **Careful Coordination**: Ensure no file conflicts or shared resource contention
+* **Merge Strategy**: Plan integration points before parallel execution begins
+</file>
+
+<file path=".agents/rules/primary-workflow.md">
+---
+trigger: always_on
+---
+
+# Primary Workflow
+
+**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
+**IMPORTANT**: Ensure token efficiency while maintaining high quality.
+
+#### 1. Code Implementation
+- Before you start, delegate to `planner` agent to create a implementation plan with TODO tasks in `./plans` directory.
+- When in planning phase, use multiple `researcher` agents in parallel to conduct research on different relevant technical topics and report back to `planner` agent to create implementation plan.
+- Write clean, readable, and maintainable code
+- Follow established architectural patterns
+- Implement features according to specifications
+- Handle edge cases and error scenarios
+- **DO NOT** create new enhanced files, update to the existing files directly.
+- **[IMPORTANT]** After creating or modifying code file, run compile command/script to check for any compile errors.
+
+#### 2. Testing
+- Delegate to `tester` agent to run tests on the **simplified code**
+  - Write comprehensive unit tests
+  - Ensure high code coverage
+  - Test error scenarios
+  - Validate performance requirements
+- Tests verify the FINAL code that will be reviewed and merged
+- **DO NOT** ignore failing tests just to pass the build.
+- **IMPORTANT:** make sure you don't use fake data, mocks, cheats, tricks, temporary solutions, just to pass the build or github actions.
+- **IMPORTANT:** Always fix failing tests follow the recommendations and delegate to `tester` agent to run tests again, only finish your session when all tests pass.
+
+#### 3. Code Quality
+- After testing passes, delegate to `code-reviewer` agent to review clean, tested code.
+- Follow coding standards and conventions
+- Write self-documenting code
+- Add meaningful comments for complex logic
+- Optimize for performance and maintainability
+
+#### 4. Integration
+- Always follow the plan given by `planner` agent
+- Ensure seamless integration with existing code
+- Follow API contracts precisely
+- Maintain backward compatibility
+- Document breaking changes
+- Delegate to `docs-manager` agent to update docs in `./docs` directory if any.
+
+#### 5. Debugging
+- When a user report bugs or issues on the server or a CI/CD pipeline, delegate to `debugger` agent to run tests and analyze the summary report.
+- Read the summary report from `debugger` agent and implement the fix.
+- Delegate to `tester` agent to run tests and analyze the summary report.
+- If the `tester` agent reports failed tests, fix them follow the recommendations and repeat from the **Step 3**.
+
+#### 6. Visual Explanations
+When explaining complex code, protocols, or architecture:
+- **When to use:** User asks "explain", "how does X work", "visualize", or topic has 3+ interacting components
+- Use `/preview --explain <topic>` to generate visual explanation with ASCII + Mermaid
+- Use `/preview --diagram <topic>` for architecture and data flow diagrams
+- Use `/preview --slides <topic>` for step-by-step walkthroughs
+- Use `/preview --ascii <topic>` for terminal-friendly output only
+- **Plan context:** Visuals save to plan folder from `## Plan Context` hook injection; if none, uses `plans/visuals/`
+- Auto-opens in browser via markdown-novel-viewer with Mermaid rendering
+- See `development-rules.md` → "Visual Aids" section for additional guidance
+</file>
+
+<file path=".agents/rules/project-instructions.md">
+---
+trigger: always_on
+---
+
+# Project Instructions
+
+## Role & Responsibilities
+
+* Analyze user requirements, coordinate tasks, and ensure cohesive delivery of features that meet specifications and architectural standards
+* Activate relevant skills from the skills catalog as needed during the process
+* Follow strictly the development rules in `development-rules.md`
+* Before planning or implementing, always read `./README.md` first for context
+
+## Key Principles
+
+* **YAGNI** — You Aren't Gonna Need It
+* **KISS** — Keep It Simple, Stupid
+* **DRY** — Don't Repeat Yourself
+
+## Reports & Output
+
+* Sacrifice grammar for concision when writing reports
+* List any unresolved questions at the end, if any
+* Ensure token efficiency while maintaining high quality
+
+## Python Scripts (Skills)
+
+When running Python scripts from `.agent/skills/`, use the venv Python interpreter:
+* **Linux/macOS:** `.agent/skills/.venv/bin/python3 scripts/xxx.py`
+* **Windows:** `.agent\skills\.venv\Scripts\python.exe scripts\xxx.py`
+
+## Documentation Management
+
+Keep all important docs in `./docs` folder:
+
+```
+./docs
+├── project-overview-pdr.md
+├── code-standards.md
+├── codebase-summary.md
+├── design-guidelines.md
+├── deployment-guide.md
+├── system-architecture.md
+└── project-roadmap.md
+```
+
+## Primary Workflow
+
+### 1. Code Implementation
+* Create an implementation plan with TODO tasks in `./plans` directory before starting
+* When in planning phase, research different relevant technical topics in parallel and report back to create implementation plan
+* Write clean, readable, and maintainable code
+* Follow established architectural patterns
+* Implement features according to specifications
+* Handle edge cases and error scenarios
+* **DO NOT** create new enhanced files — update existing files directly
+* After creating or modifying code, run compile command/script to check for errors
+
+### 2. Testing
+* Write comprehensive unit tests
+* Ensure high code coverage
+* Test error scenarios
+* Validate performance requirements
+* Tests are critical — **DO NOT** ignore failing tests just to pass the build
+* **DO NOT** use fake data, mocks, cheats, tricks, or temporary solutions just to pass the build
+* Always fix failing tests and run tests again — only finish when all tests pass
+
+### 3. Code Quality
+* After implementation, review code for quality
+* Follow coding standards and conventions
+* Write self-documenting code
+* Add meaningful comments for complex logic
+* Optimize for performance and maintainability
+
+### 4. Integration
+* Follow the implementation plan
+* Ensure seamless integration with existing code
+* Follow API contracts precisely
+* Maintain backward compatibility
+* Document breaking changes
+* Update docs in `./docs` directory if needed
+
+### 5. Debugging
+* When bugs or issues are reported, investigate root causes before fixing
+* Read the analysis report and implement the fix
+* Run tests and analyze the summary report
+* If tests fail, fix them and repeat from Step 2
+</file>
+
+<file path=".agents/rules/team-coordination-rules.md">
+---
+trigger: always_on
+---
+
+# Team Coordination Rules
+
+> These rules only apply when operating as a teammate within an Agent Team.
+> They have no effect on standard sessions or subagent workflows.
+
+Rules for agents operating as teammates within an Agent Team.
+
+## File Ownership (CRITICAL)
+
+- Each teammate MUST own distinct files — no overlapping edits
+- Define ownership via glob patterns in task descriptions: `File ownership: src/api/*, src/models/*`
+- Lead resolves ownership conflicts by restructuring tasks or handling shared files directly
+- Tester owns test files only; reads implementation files but never edits them
+- If ownership violation detected: STOP and report to lead immediately
+
+## Git Safety
+
+- Prefer git worktrees for implementation teams — each dev in own worktree eliminates conflicts
+- Never force-push from a teammate session
+- Commit frequently with descriptive messages
+- Pull before push to catch merge conflicts early
+- If working in a git worktree, commit/push to the worktree branch — not main or dev
+
+## Communication Protocol
+
+- Use `SendMessage(type: "message")` for peer DMs — always specify recipient by name
+- Use `SendMessage(type: "broadcast")` ONLY for critical blocking issues affecting entire team
+- Mark tasks completed via `TaskUpdate` BEFORE sending completion message to lead
+- Include actionable findings in messages, not just "I'm done"
+- Never send structured JSON status messages — use plain text
+
+## CK Stack Conventions
+
+### Report Output
+- Save reports to `{CK_REPORTS_PATH}` (injected via hook, fallback: `plans/reports/`)
+- Naming: `{type}-{date}-{slug}.md` where type = your role (researcher, reviewer, debugger)
+- Sacrifice grammar for concision. List unresolved questions at end.
+
+### Commit Messages
+- Use conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`
+- No AI references in commit messages
+- Keep commits focused on actual code changes
+
+### Docs Sync (Implementation Teams Only)
+- After completing implementation tasks, lead MUST evaluate docs impact
+- State explicitly: `Docs impact: [none|minor|major]`
+- If impact: update `docs/` directory or note in completion message
+
+## Task Claiming
+
+- Claim lowest-ID unblocked task first (earlier tasks set up context for later ones)
+- Check `TaskList` after completing each task for newly unblocked work
+- Set task to `in_progress` before starting work
+- If all tasks blocked, notify lead and offer to help unblock
+
+## Plan Approval Flow
+
+When `plan_mode_required` is set:
+1. Research and plan your approach (read-only — no file edits)
+2. Send plan via `ExitPlanMode` — this triggers approval request to lead
+3. Wait for lead's `plan_approval_response`
+4. If rejected: revise based on feedback, resubmit
+5. If approved: proceed with implementation
+
+## Conflict Resolution
+
+- If two teammates need the same file: escalate to lead immediately
+- If a teammate's plan is rejected twice: lead takes over that task
+- If findings conflict between reviewers: lead synthesizes and documents disagreement
+- If blocked by another teammate's incomplete work: message them directly first, escalate to lead if unresponsive
+
+## Shutdown Protocol
+
+- Approve shutdown requests unless mid-critical-operation
+- Always mark current task as completed before approving shutdown
+- If rejecting shutdown, explain why concisely
+- Extract `requestId` from shutdown request JSON and pass to `shutdown_response`
+
+## Idle State (Normal Behavior)
+
+- Going idle after sending a message is NORMAL — not an error
+- Idle means waiting for input, not disconnected
+- Sending a message to an idle teammate wakes them up
+- Do not treat idle notifications as completion signals — check task status instead
+
+## Discovery
+
+- Read team config at `~/.claude/teams/{team-name}/config.json` to discover teammates
+- Always refer to teammates by NAME (not agent ID)
+- Names are used for: `recipient` in SendMessage, task `owner` in TaskUpdate
+</file>
+
+<file path="assets/images/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Nuoi Dev favicon">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="108" height="108" rx="28" fill="url(#g)"/>
+  <text x="64" y="76" text-anchor="middle" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="52" font-weight="700">{ }</text>
+</svg>
+</file>
+
+<file path="assets/images/og-image.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Nuoi Dev Open Graph Image">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3730a3"/>
+      <stop offset="55%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#67e8f9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="170" cy="120" r="120" fill="#ffffff" opacity="0.09"/>
+  <circle cx="1070" cy="560" r="180" fill="#22d3ee" opacity="0.12"/>
+
+  <text x="96" y="240" fill="#e0e7ff" font-family="'JetBrains Mono', monospace" font-size="38">// nuoi.dev</text>
+  <text x="96" y="350" fill="#ffffff" font-family="Inter, sans-serif" font-size="84" font-weight="700">Nuoi Dev</text>
+  <text x="96" y="418" fill="#dbeafe" font-family="Inter, sans-serif" font-size="40">Bao tro va mentoring cho developer Viet Nam</text>
+
+  <line x1="96" y1="470" x2="890" y2="470" stroke="url(#line)" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="96" y="532" fill="#bae6fd" font-family="Inter, sans-serif" font-size="30">Sponsor - Mentor - Grow Together</text>
+</svg>
+</file>
+
+<file path="plans/260227-1625-nuoi-dev-website/phase-04-cta-footer-polish.md">
+# Phase 04 — CTA + Footer + Polish
+
+## Overview
+- **Priority:** Medium
+- **Status:** ✅ Done
+- **Description:** Final CTA section, footer, performance optimization, polish
+
+## Implementation Steps
+
+### CTA Section
+1. Full-width gradient background
+2. Compelling headline + sub-text
+3. Dual CTA buttons: "Trở thành Sponsor" + "Đăng ký Dev" (`href="#"` placeholder)
+4. Subtle glow animation (CSS only)
+
+### Footer
+1. Logo + tagline
+2. Nav links (scroll to sections)
+3. Social media placeholder icons: GitHub, Facebook, Email, LinkedIn, X (`href="#"`)
+4. Copyright
+
+### Polish
+1. Smooth scroll navigation
+2. Scroll-triggered animations (Intersection Observer)
+3. SEO meta tags (title, description, OG)
+4. Favicon + OG image
+5. Performance audit
+6. Mobile final check
+
+## Todo
+
+- [x] CTA section
+- [x] Footer component
+- [x] Smooth scroll
+- [x] Scroll animations
+- [x] SEO meta tags
+- [x] Performance check
+- [x] Mobile responsive final
+
+## Completion
+
+- **Completion Date:** 2026-02-27
+- **Notes:** Phase 04 shipped: CTA + footer + polish complete (smooth scroll, scroll animations, SEO/performance/mobile final check).
+</file>
+
+<file path="plans/reports/brainstormer-260227-1637-validate-nuoi-dev-website.md">
+# Validation Report — Nuôi Dev Website Plan
+
+**Date:** 2026-02-27 16:37
+**Plan:** [plan.md](../260227-1625-nuoi-dev-website/plan.md)
+**Status:** ✅ Validated — Ready to implement
+
+## Validation Questions & Decisions
+
+| # | Question | Decision |
+|---|----------|----------|
+| 1 | Data cho Dev Stories & Impact | **Hardcode** — dummy data |
+| 2 | CTA buttons dẫn đến đâu | **Placeholder `#`** — tính sau |
+| 3 | Tech stack mâu thuẫn (Next.js vs HTML thuần) | **HTML/CSS/JS thuần** — fix phase-01 |
+| 4 | Localhost serving method | **Mở file trực tiếp** — zero deps |
+| 5 | Hero animated background | **CSS gradient animation** — không particles |
+| 6 | Footer social links | **Placeholder icons** — GitHub, FB, Email, LinkedIn, X |
+
+## Files Updated
+
+- `plan.md` — Tech stack, dependencies, validation notes
+- `phase-01-project-setup.md` — Fix "Next.js" → "HTML/CSS/JS", serve method
+- `phase-02-hero-about.md` — Clarify CSS gradient, placeholder CTA
+- `phase-03-content-sections.md` — Hardcode data, grid (no carousel)
+- `phase-04-cta-footer-polish.md` — Placeholder CTA & social icons
+
+## Key Insights
+
+- **Zero dependencies** — chỉ cần browser, không Node.js/npm
+- **KISS approach** — Grid thay carousel, CSS gradient thay particles
+- **Placeholder-first** — links & data hardcode, iterate sau
+</file>
+
+<file path="plans/reports/project-manager-20260227-phase-04-finalize.md">
+# Project Manager Report - 2026-02-27 - Phase 04 Finalize
+
+## Scope
+- Finalized Phase 04 tracking state in plan files only.
+- No product code touched.
+
+## Updates Applied
+- `plans/260227-1625-nuoi-dev-website/phase-04-cta-footer-polish.md`
+- Status set to `✅ Done`.
+- All todo checkboxes marked complete.
+- Added completion block with date `2026-02-27` and concise ship note.
+- `plans/260227-1625-nuoi-dev-website/plan.md`
+- Frontmatter `status` changed from `planning` to `completed`.
+- Phase table row for Phase 04 changed to `✅ Done`.
+- Added validation note confirming Phase 04 shipped (CTA/footer/polish).
+
+## Coordination Note (Critical)
+- Main agent must complete implementation plan closure and finish any unfinished tasks immediately.
+- Plan completion discipline is critical for tracking integrity and handoff safety.
+
+## Unresolved Questions
+- None.
+</file>
+
+<file path="plans/reports/reviewer-20260227-phase-04-cta-footer-polish-final.md">
+## Code Review Summary
+
+### Scope
+- Files: `index.html`, `css/globals.css`, `css/cta.css`, `css/footer.css`, `js/main.js`, `assets/images/*`
+- LOC reviewed: 978 (text) + image metadata/dimensions
+- Focus: Phase 04 final CTA + footer + polish state
+- Scout findings:
+  - Recent-change scan (`git diff --name-only HEAD~1`) includes all scoped code files.
+  - CTA/footer selectors are consistently declared and consumed (`index.html`, `css/cta.css`, `css/footer.css`).
+  - Internal section hash links in nav/footer map to existing IDs.
+
+### Overall Assessment
+No material code-quality, security, or runtime findings in the scoped Phase 04 final code state.
+
+### Critical Issues
+- None.
+
+### High Priority
+- None.
+
+### Medium Priority
+- None.
+
+### Low Priority
+- None.
+
+### Edge Cases Found by Scout
+- `prefers-reduced-motion` handling is implemented for smooth scroll and fade-in/glow animation (`js/main.js:47`, `css/globals.css:167`, `css/cta.css:122`).
+- Impact counters animate once and unobserve correctly, avoiding repeat-trigger loops (`js/main.js:96`, `js/main.js:101`).
+- Footer year fallback is safe if target node missing (`js/main.js:138-140`).
+
+### Positive Observations
+- Placeholder links are consistently hardened with disabled semantics (`index.html:362-363`, `index.html:391-395`, `css/globals.css:128-131`).
+- SEO/social metadata and icon assets are present and valid (`index.html:14-26`, `assets/images/og-image.png`, `assets/images/apple-touch-icon.png`).
+- JS syntax and SVG validity checks pass (`node --check js/main.js`, `xmllint --noout assets/images/favicon.svg assets/images/og-image.svg`).
+
+### Recommended Actions
+1. Keep current implementation as Phase 04 final baseline.
+
+### Metrics
+- Type Coverage: N/A (vanilla HTML/CSS/JS)
+- Test Coverage: N/A (no automated test harness configured in repo)
+- Linting Issues: 0 syntax issues in scoped JS
+
+### Residual Risk
+- CTA/social links are intentionally placeholders and non-functional until real destinations are wired (`index.html:362-363`, `index.html:391-395`).
+- No automated regression suite is configured; future changes rely on manual/static verification.
+
+### Unresolved Questions
+- Should placeholder CTA/social destinations be wired in the next phase before production release?
+</file>
+
+<file path="plans/reports/reviewer-20260227-phase-04-cta-footer-polish-followup.md">
+## Code Review Summary
+
+### Scope
+- Files: `index.html`, `js/main.js`, `assets/images/*`, `css/cta.css`, `css/footer.css`
+- LOC reviewed: 812 (text files) + image assets metadata/dimensions
+- Focus: Follow-up verification of prior findings (OG/Twitter metadata, apple-touch-icon, placeholder links)
+- Scout findings:
+  - All `href="#"` anchors are tagged with `data-placeholder="true"`.
+  - Placeholder click suppression exists only in JS (`initPlaceholderLinks`).
+
+### Critical Issues
+- None.
+
+### High Priority
+- None.
+
+### Medium Priority
+1. Placeholder links are still interactive anchors with no real destination.
+- Evidence: `index.html:362`, `index.html:363`, `index.html:391`, `index.html:392`, `index.html:393`, `index.html:394`, `index.html:395`; suppressed by JS at `js/main.js:73-79`.
+- Impact: Conversion/social actions remain dead-ends. If JS fails/blocked, `href="#"` behavior can still navigate to top/hash.
+- Recommendation: Replace with real URLs, or render non-link disabled UI until destinations are available.
+
+### Low Priority
+- None.
+
+### Resolved Since Previous Review
+- OG/Twitter image reliability fixed: absolute HTTPS PNG URL + alt tags present.
+  - Evidence: `index.html:14-15`, `index.html:20-21`.
+  - Asset check: `assets/images/og-image.png` exists (1200x630).
+- Apple touch icon compatibility fixed: PNG icon path and correct size.
+  - Evidence: `index.html:26`.
+  - Asset check: `assets/images/apple-touch-icon.png` exists (180x180).
+
+### Unresolved Questions
+- Are CTA/social destinations intentionally deferred to a later phase, or should these be wired now for release readiness?
+</file>
+
+<file path="plans/reports/reviewer-20260227-phase-04-cta-footer-polish.md">
+## Code Review Summary
+
+### Scope
+- Files: `index.html`, `css/globals.css`, `css/cta.css`, `css/footer.css`, `js/main.js`, `assets/images/favicon.svg`, `assets/images/og-image.svg`
+- LOC reviewed: 1,015
+- Focus: Phase 04 (CTA + footer + polish)
+- Scout findings:
+  - Internal hash links map correctly to existing section IDs.
+  - 7 placeholder links (`href="#"`) now rely on JS suppression.
+  - New CTA/footer selectors are only consumed by `index.html` + dedicated CSS.
+
+### Overall Assessment
+Phase 04 is visually complete and mostly clean, but not fully production-ready for sharing/SEO surfaces and final CTA behavior.
+
+### Critical Issues
+- None.
+
+### High Priority
+1. Social preview metadata uses relative SVG images, which is high-risk for broken cards on X/Twitter and some OG consumers.
+- Evidence: `index.html:14`, `index.html:19` point to `assets/images/og-image.svg`; OG asset is SVG at `assets/images/og-image.svg:1`.
+- Impact: Link shares may render without image preview, reducing CTR and campaign performance.
+- Recommendation: Use an absolute HTTPS URL to a PNG/JPG OG image (e.g. 1200x630), keep SVG optional for internal use.
+
+### Medium Priority
+1. `apple-touch-icon` points to SVG favicon, which is not reliably supported for iOS home screen icons.
+- Evidence: `index.html:22` references `assets/images/favicon.svg`; file is SVG at `assets/images/favicon.svg:1`.
+- Impact: Saved-to-home-screen icon may be missing or degraded on iOS.
+- Recommendation: Provide a PNG touch icon (e.g. 180x180) and point `apple-touch-icon` to that PNG.
+
+2. Primary CTA and footer social links are non-functional in runtime due to placeholder `#` + global click suppression.
+- Evidence: Placeholder anchors at `index.html:358`, `index.html:359`, `index.html:387-391`; suppression logic in `js/main.js:73-79`.
+- Impact: Keyboard/mouse users can activate links but no action occurs; conversion path remains blocked in production.
+- Recommendation: Wire real destinations (`mailto:`, social URLs, form route) or render disabled/non-link UI until destinations exist.
+
+### Low Priority
+1. Missing image alt metadata for social cards.
+- Evidence: `index.html:14-19` includes image meta tags, but no `og:image:alt` / `twitter:image:alt`.
+- Impact: Lower accessibility/quality for social previews.
+- Recommendation: Add both alt tags with concise Vietnamese descriptions.
+
+### Edge Cases Found by Scout
+- Smooth-scroll handler (`js/main.js:47-70`) correctly skips `href="#"` links and only intercepts valid section hashes.
+- Reduced-motion handling is implemented in both CSS and JS (`css/globals.css:162-172`, `js/main.js:48`).
+- No duplicate IDs detected in `index.html`.
+
+### Positive Observations
+- CTA/footer structure is semantic (`section`, `footer`, `nav`) with clean class separation.
+- Mobile adaptations exist for CTA buttons and footer grid (`css/cta.css:106-120`, `css/footer.css:98-125`).
+- Footer year auto-update is resilient (`js/main.js:148-152`).
+
+### Recommended Actions
+1. Replace OG/Twitter image URLs with absolute PNG/JPG URLs.
+2. Add iOS-compatible touch icon asset and update meta link.
+3. Replace placeholder CTA/social links with real destinations before release.
+4. Add `og:image:alt` and `twitter:image:alt` tags.
+
+### Metrics
+- Type Coverage: N/A (vanilla HTML/CSS/JS)
+- Test Coverage: N/A (no automated test suite in scope)
+- Linting Issues: 0 syntax issues in reviewed JS (`node --check js/main.js`)
+
+### Unresolved Questions
+- Is this phase intended for production release now, or still a staging milestone where placeholder links are acceptable?
+- What is the final public domain for absolute OG/Twitter image URLs?
+</file>
+
+<file path="plans/reports/tester-20260227-phase-04-cta-footer-polish-final.md">
+# Tester Report — Phase 04 CTA + Footer + Polish (Final)
+
+Date: 2026-02-27
+Work context: `/Users/hieutv/Documents/workspace/hieutv-dng@github.com/nuoi-dev`
+Scope: `index.html`, `css/cta.css`, `css/footer.css`, `css/globals.css`, `js/main.js`, `assets/images/*`
+
+## Test Results Overview
+- Overall: **PASS with low-risk caveat**
+- Automated unit/integration/e2e suites: **None configured in repo root**
+- Checks run: 8
+- Passed: 8
+- Failed: 0
+- Skipped: 0
+
+## Checks Executed
+1. `node --check js/main.js` -> PASS
+2. `xmllint --noout assets/images/favicon.svg assets/images/og-image.svg` -> PASS
+3. Fragment anchor audit (`href="#..."` -> matching `id`) -> PASS (14 links, 0 missing targets)
+4. Duplicate `id` scan + local asset reference existence in `index.html` -> PASS (0 duplicates, 0 missing local refs)
+5. Placeholder link attribute audit -> PASS (7/7 `href="#"` links have `data-placeholder="true"`, `aria-disabled="true"`, `tabindex="-1"`)
+6. Placeholder behavior mechanism audit -> PASS (CSS disables pointer events; smooth-scroll skips `#`)
+7. SEO metadata audit (OG/Twitter image + alt) -> PASS (`og:image`, `og:image:alt`, `twitter:image`, `twitter:image:alt` present)
+8. Touch/icon compatibility audit -> PASS (`apple-touch-icon` 180x180 PNG present; favicon PNG sizes 32x32 and 192x192 present)
+
+## Coverage Metrics
+- Line/branch/function coverage: **N/A** (no test runner/coverage harness in this workspace)
+- Static validation coverage for requested scope: **100% files reviewed + validated**
+
+## Failed Tests
+- None.
+
+## Performance Metrics
+- No benchmark/load harness configured.
+- Scoped payload size check: `62,741 bytes` total across scope files/assets.
+- No performance blocker found from static QA pass.
+
+## Build Status
+- Build scripts/pipeline: **N/A** in current workspace (no `package.json` or build manifest).
+- Static syntax checks in scope: PASS.
+
+## Critical Issues
+- None.
+
+## Recommendations
+1. Keep current placeholder hardening (`data-placeholder`, disabled semantics, CSS pointer lock) until real URLs/forms are wired.
+2. Add lightweight HTML/CSS lint tooling to repo for deterministic syntax checks in CI.
+3. When destinations ready, replace placeholder anchors with real URLs and remove disabled semantics.
+
+## Next Steps
+1. Approve Phase 04 final state as QA pass.
+2. Track placeholder destination wiring as next-phase task.
+
+## Unresolved Questions
+- Should placeholder links remain non-interactive in production, or should they be replaced before release cut?
+</file>
+
+<file path="plans/reports/tester-20260227-phase-04-cta-footer-polish.md">
+# Tester Report — Phase 04 CTA + Footer + Polish
+
+Date: 2026-02-27
+Work context: `/Users/hieutv/Documents/workspace/hieutv-dng@github.com/nuoi-dev`
+Scope: `index.html`, `css/cta.css`, `css/footer.css`, `css/globals.css`, `js/main.js`, `assets/images/favicon.svg`, `assets/images/og-image.svg`
+
+## Test Results Overview
+- Overall: **PASS with minor risks**
+- Automated test suites: **None found** (no `package.json`/test runner manifest in repo root)
+- Checks run: 5
+- Passed: 4
+- Failed: 0
+- Informational/non-blocking: 1
+
+## Checks Executed
+1. `node --check js/main.js` -> PASS (no JS syntax errors)
+2. `xmllint --noout assets/images/favicon.svg assets/images/og-image.svg` -> PASS (valid XML/SVG)
+3. Static anchor target audit (`href="#..."` vs existing `id="..."`) -> PASS (all non-empty fragment links resolved)
+4. Duplicate `id` scan in `index.html` -> PASS (none)
+5. `tidy -qe index.html` -> INFO only (legacy Apple tidy 2006, noisy false positives on HTML5 + UTF-8 text)
+
+## JS / Anchor / Scroll Validation
+- `initSmoothScroll()` logic valid, no syntax/runtime red flags in static review (`js/main.js:46-69`).
+- All section anchors in navbar/footer/hero point to existing IDs (`index.html:54-58`, `83-84`, `379-383`).
+- Scroll offset support present via `scroll-padding-top` (`css/globals.css:13-16`).
+
+## Responsive Breakpoint Risk Check
+- CTA breakpoints: `<=768px` (`css/cta.css:106-118`) -> full-width stacked CTA buttons.
+- Footer breakpoints: `<=992px`, `<=640px` (`css/footer.css:98-125`) -> 3-column to 1-column flow.
+- Global text/layout breakpoints: `<=768px`, `<=480px` (`css/globals.css:141-160`).
+
+## Issues Found
+1. Low: Placeholder links (`href="#"`) still navigate to top because smooth-scroll handler explicitly skips `#` (`js/main.js:52`).
+- Affected: navbar logo (`index.html:47`), CTA buttons (`358-359`), footer social links (`387-391`).
+- Impact: unexpected page jump on click during demo/manual QA.
+- Blocking: No (expected for placeholders, but UX caveat).
+
+2. Low risk: `white-space: nowrap` on `.btn` (`css/globals.css:96`) can cause overflow risk on very narrow screens/localized longer CTA labels.
+- Current labels look safe; edge-case risk only.
+
+## Coverage Metrics
+- Unit/integration/e2e coverage: **N/A** (no automated test framework configured in this workspace).
+- Static validation coverage for scoped files: **Performed** (syntax + anchor/link consistency + breakpoint review).
+
+## Performance Metrics
+- No benchmark harness in repo.
+- Lightweight asset footprint in scope (~32 KB total across checked files).
+- No blocking performance issue found from static pass.
+
+## Build Status
+- Build pipeline/scripts: **N/A** (no build config/test runner discovered in current workspace root).
+
+## Critical Issues
+- None.
+
+## Recommendations
+1. For placeholder links, prevent default to avoid scroll-to-top during demos until real URLs/forms are wired.
+2. Add minimal static CI checks (HTML hint, CSS lint, JS syntax check) for deterministic QA.
+3. Add one small browser smoke test (Playwright) for anchor scroll + mobile footer/CTA layout.
+
+## Next Steps
+1. Keep Phase 04 as shippable for static content/demo.
+2. Convert CTA/social placeholder `#` links to real destinations in next phase.
+
+## Unresolved Questions
+- Should placeholder CTA/social links intentionally jump top, or should they be inert (`preventDefault`) until real endpoints exist?
+</file>
+
+<file path="plans/templates/bug-fix-template.md">
+# [Bug Fix] Implementation Plan
+
+**Date**: YYYY-MM-DD  
+**Type**: Bug Fix  
+**Priority**: [Critical/High/Medium/Low]  
+**Context Tokens**: <150 words
+
+## Executive Summary
+Brief description of the bug and its impact.
+
+## Issue Analysis
+### Symptoms
+- [ ] Symptom 1
+- [ ] Symptom 2
+
+### Root Cause
+Brief explanation of the underlying cause.
+
+### Evidence
+- **Logs**: Reference to log files (don't include full logs)
+- **Error Messages**: Key error patterns
+- **Affected Components**: List of impacted files/modules
+
+## Context Links
+- **Related Issues**: [GitHub issue numbers]
+- **Recent Changes**: [Relevant commits or PRs]
+- **Dependencies**: [Related systems]
+
+## Solution Design
+### Approach
+High-level fix strategy in 2-3 sentences.
+
+### Changes Required
+1. **File 1** (`path/to/file.ts`): Brief change description
+2. **File 2** (`path/to/file.ts`): Brief change description
+
+### Testing Changes
+- [ ] Update existing tests
+- [ ] Add new test cases
+- [ ] Validate fix doesn't break existing functionality
+
+## Implementation Steps
+1. [ ] Step 1 - file: `path/to/file.ts`
+2. [ ] Step 2 - file: `path/to/file.ts`
+3. [ ] Run test suite
+4. [ ] Validate fix in relevant environments
+
+## Verification Plan
+### Test Cases
+- [ ] Test case 1: Expected behavior
+- [ ] Test case 2: Edge case handling
+- [ ] Regression test: Ensure no new issues
+
+### Rollback Plan
+If the fix causes issues:
+1. Revert commit: `git revert <commit-hash>`
+2. Restore previous behavior in files X, Y, Z
+
+## Risk Assessment
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Risk 1 | Medium | Mitigation plan |
+
+## TODO Checklist
+- [ ] Implement fix
+- [ ] Update tests
+- [ ] Run full test suite
+- [ ] Code review
+- [ ] Deploy and verify
+</file>
+
+<file path="plans/templates/feature-implementation-template.md">
+# [Feature Name] Implementation Plan
+
+**Date**: YYYY-MM-DD  
+**Type**: Feature Implementation  
+**Status**: Planning  
+**Context Tokens**: <200 words
+
+## Executive Summary
+Brief 2-3 sentence description of the feature and its business value.
+
+## Context Links
+- **Related Plans**: [List other plan files - no full content]
+- **Dependencies**: [External systems, APIs, existing features]
+- **Reference Docs**: [Link to docs in ./docs directory]
+
+## Requirements
+### Functional Requirements
+- [ ] Requirement 1
+- [ ] Requirement 2
+
+### Non-Functional Requirements  
+- [ ] Performance target
+- [ ] Security requirement
+- [ ] Scalability requirement
+
+## Architecture Overview
+```mermaid
+[Simple component diagram]
+```
+
+### Key Components
+- **Component 1**: Brief description
+- **Component 2**: Brief description
+
+### Data Models
+- **Model 1**: Key fields
+- **Model 2**: Key fields
+
+## Implementation Phases
+
+### Phase 1: [Name] (Est: X days)
+**Scope**: Specific boundaries
+**Tasks**:
+1. [ ] Task 1 - file: `path/to/file.ts`
+2. [ ] Task 2 - file: `path/to/file.ts`
+
+**Acceptance Criteria**:
+- [ ] Criteria 1
+- [ ] Criteria 2
+
+### Phase 2: [Name] (Est: X days)
+[Repeat structure]
+
+## Testing Strategy
+- **Unit Tests**: Specific test coverage targets
+- **Integration Tests**: Key interaction points
+- **E2E Tests**: Critical user flows
+
+## Security Considerations
+- [ ] Security item 1
+- [ ] Security item 2
+
+## Risk Assessment
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Risk 1 | High | Mitigation strategy |
+
+## Quick Reference
+### Key Commands
+```bash
+npm run command
+```
+
+### Configuration Files
+- `config/file.ts`: Purpose
+- `.env.example`: Environment variables
+
+## TODO Checklist
+- [ ] Phase 1 Task 1
+- [ ] Phase 1 Task 2
+- [ ] Phase 2 Task 1
+- [ ] Testing complete
+- [ ] Documentation updated
+- [ ] Code review passed
+</file>
+
+<file path="plans/templates/refactor-template.md">
+# [Component/Module] Refactoring Plan
+
+**Date**: YYYY-MM-DD  
+**Type**: Refactoring  
+**Scope**: [Module/Component/System level]  
+**Context Tokens**: <200 words
+
+## Executive Summary
+Brief description of what is being refactored and why.
+
+## Current State Analysis
+### Issues with Current Implementation
+- [ ] Issue 1: Performance bottleneck
+- [ ] Issue 2: Code maintainability
+- [ ] Issue 3: Technical debt
+
+### Metrics (Before)
+- **Performance**: Current benchmarks
+- **Code Quality**: Complexity metrics
+- **Test Coverage**: Current percentage
+
+## Context Links
+- **Affected Modules**: [List without full content]
+- **Dependencies**: [Other systems impacted]
+- **Related Documentation**: [Links to docs]
+
+## Refactoring Strategy
+### Approach
+High-level strategy for the refactoring in 2-3 sentences.
+
+### Architecture Changes
+```mermaid
+[Before/After comparison diagram]
+```
+
+### Key Improvements
+- **Improvement 1**: Brief description
+- **Improvement 2**: Brief description
+
+## Implementation Plan
+
+### Phase 1: Preparation (Est: X days)
+**Scope**: Setup and preparation work
+1. [ ] Create comprehensive tests for current functionality
+2. [ ] Document current behavior
+3. [ ] Identify all dependencies
+
+### Phase 2: Core Refactoring (Est: X days)
+**Scope**: Main refactoring work
+1. [ ] Refactor component A - file: `path/to/file.ts`
+2. [ ] Refactor component B - file: `path/to/file.ts`
+3. [ ] Update integration points
+
+### Phase 3: Integration & Testing (Est: X days)
+**Scope**: Validation and cleanup
+1. [ ] Integration testing
+2. [ ] Performance validation
+3. [ ] Documentation updates
+
+## Backward Compatibility
+- **Breaking Changes**: [List any breaking changes]
+- **Migration Path**: [Steps for users/systems]
+- **Deprecation Timeline**: [If applicable]
+
+## Success Metrics (After)
+- **Performance**: Target improvements
+- **Code Quality**: Target metrics
+- **Test Coverage**: Target percentage
+
+## Risk Assessment
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Breaking changes | High | Comprehensive testing |
+| Performance regression | Medium | Benchmarking |
+
+## TODO Checklist
+- [ ] Phase 1: Preparation complete
+- [ ] Phase 2: Core refactoring complete  
+- [ ] Phase 3: Integration complete
+- [ ] Performance benchmarks validated
+- [ ] Documentation updated
+- [ ] Code review passed
+</file>
+
+<file path="plans/templates/template-usage-guide.md">
+# Plan Template Usage Guide
+
+## Template Selection
+
+### Feature Implementation Template
+**Use when**: Adding new functionality, endpoints, services, or modules
+**File**: `feature-implementation-template.md`
+**Size**: Medium to large scope changes
+
+### Bug Fix Template  
+**Use when**: Fixing specific issues, errors, or broken functionality
+**File**: `bug-fix-template.md`
+**Size**: Small to medium scope changes
+
+### Refactoring Template
+**Use when**: Improving code structure, performance, or maintainability without changing functionality
+**File**: `refactor-template.md` 
+**Size**: Medium to large scope changes
+
+## Context Management Best Practices
+
+### Keep Plans Focused
+- **Executive Summary**: Max 3 sentences
+- **Context Links**: Reference files, don't include full content
+- **Tasks**: Max 10 per phase
+- **Context Tokens**: Target <200 words for summaries
+
+### Template Adaptation
+1. Copy the appropriate template to `plans/YYMMDD-feature-name-plan.md`
+2. Replace bracketed placeholders with actual content
+3. Remove sections not relevant to your specific use case
+4. Keep the core structure intact for consistency
+
+### Cross-References Instead of Duplication
+- Link to existing documentation in `./docs/`
+- Reference other plans without copying content
+- Use file paths instead of code blocks where possible
+- Focus on "what" and "why", not detailed "how"
+
+## Quality Checklist
+
+Before finalizing any plan:
+- [ ] Executive summary is clear and concise
+- [ ] Tasks are specific and actionable
+- [ ] File paths are included for implementation tasks
+- [ ] Success criteria are measurable
+- [ ] Context links are used instead of full content
+- [ ] TODO checklist is complete and realistic
+
+## Context Refresh Triggers
+
+Use these templates when:
+- Starting a new development phase
+- Switching between different types of work (feature → bugfix)
+- After major context accumulation (>8000 tokens)
+- When agent handoffs occur
+
+This ensures each plan starts with fresh, focused context optimized for the specific task type.
+</file>
+
+<file path="css/cta.css">
+/* ============================================
+   CTA Section — Phase 04
+   ============================================ */
+
+.cta-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4f46e5 0%, #0891b2 55%, #1d4ed8 100%);
+}
+
+.cta-section::before,
+.cta-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(34px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: cta-glow-pulse 8s ease-in-out infinite;
+}
+
+.cta-section::before {
+  width: 320px;
+  height: 320px;
+  top: -140px;
+  left: -120px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.cta-section::after {
+  width: 300px;
+  height: 300px;
+  right: -100px;
+  bottom: -110px;
+  background: rgba(34, 211, 238, 0.85);
+  animation-delay: 1.5s;
+}
+
+.cta-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-content {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cta-label {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.cta-title {
+  margin-bottom: var(--space-md);
+  color: #ffffff;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+}
+
+.cta-subtitle {
+  margin: 0 auto var(--space-lg);
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--text-lg);
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.cta-button-primary {
+  background: #ffffff;
+  color: #3730a3;
+  box-shadow: 0 10px 26px rgba(6, 182, 212, 0.32);
+}
+
+.cta-button-primary:hover {
+  box-shadow: 0 14px 34px rgba(6, 182, 212, 0.42);
+}
+
+.cta-button-secondary {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cta-button-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@keyframes cta-glow-pulse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.08);
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-content {
+    max-width: 100%;
+  }
+
+  .cta-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-section::before,
+  .cta-section::after {
+    animation: none;
+  }
+}
+</file>
+
+<file path="css/design-tokens.css">
+/* ============================================
+   Design Tokens — Nuôi Dev
+   Light Mode Tech/Modern
+   ============================================ */
+
+:root {
+  /* Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fc;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --text-primary: #1a1a2e;
+  --text-secondary: #64648a;
+  --accent-primary: #6366f1;
+  --accent-secondary: #06b6d4;
+  --accent-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(99, 102, 241, 0.15);
+
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3.5rem;
+
+  /* Font Weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: var(--space-lg);
+
+  /* Navbar */
+  --navbar-height: 4rem;
+}
+</file>
+
+<file path="css/footer.css">
+/* ============================================
+   Footer — Phase 04
+   ============================================ */
+
+.footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding-block: var(--space-xl) var(--space-lg);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: var(--space-xl);
+  align-items: start;
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+}
+
+.footer-logo .logo-bracket {
+  color: #67e8f9;
+}
+
+.footer-logo .logo-text {
+  background: linear-gradient(120deg, #c4b5fd 0%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-tagline {
+  max-width: 420px;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.footer-nav {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.footer-nav a,
+.social-link {
+  color: #e2e8f0;
+  transition: color var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.footer-nav a:hover {
+  color: #67e8f9;
+  transform: translateX(2px);
+}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.social-link:hover {
+  color: #0f172a;
+  background: #67e8f9;
+  border-color: #67e8f9;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  padding-top: var(--space-md);
+  color: #94a3b8;
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-social {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding-block: var(--space-lg) var(--space-md);
+  }
+
+  .footer-top {
+    padding-bottom: var(--space-lg);
+  }
+
+  .footer-nav {
+    grid-template-columns: 1fr;
+  }
+}
+</file>
+
+<file path="css/globals.css">
+/* ============================================
+   Global Styles — Nuôi Dev
+   ============================================ */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--navbar-height) + 12px);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Section spacing */
+.section {
+  padding-block: var(--space-2xl);
+}
+
+/* Section headings */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-extrabold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              opacity var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--glass-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+a[data-placeholder='true'] {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Intersection Observer animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive text scaling */
+@media (max-width: 768px) {
+  :root {
+    --text-5xl: 2.5rem;
+    --text-4xl: 2rem;
+    --text-3xl: 1.5rem;
+  }
+
+  .section {
+    padding-block: var(--space-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --text-5xl: 2rem;
+    --text-4xl: 1.75rem;
+    --text-3xl: 1.25rem;
+    --container-padding: var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+</file>
+
+<file path="css/navbar.css">
+/* ============================================
+   Navbar — Nuôi Dev
+   Glassmorphism sticky navbar
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: box-shadow var(--transition-base);
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+}
+
+.navbar-logo .logo-bracket {
+  color: var(--accent-primary);
+}
+
+.navbar-logo .logo-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navbar-links a {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+.navbar-links a:hover {
+  color: var(--text-primary);
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+/* CTA button in navbar */
+.navbar-cta {
+  padding: 0.5rem 1.25rem;
+  font-size: var(--text-sm);
+}
+
+/* Mobile hamburger */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+}
+
+.navbar-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base),
+              opacity var(--transition-base);
+}
+
+/* Mobile open state */
+.navbar-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: var(--space-lg);
+    gap: var(--space-md);
+    border-bottom: 1px solid var(--glass-border);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition-base),
+                opacity var(--transition-base);
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar-links a {
+    font-size: var(--text-base);
+  }
+}
+</file>
+
+<file path="css/reset.css">
+/* ============================================
+   CSS Reset — Modern Minimal
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  line-height: 1.2;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+</file>
+
+<file path="plans/260227-1625-nuoi-dev-website/phase-01-project-setup.md">
+# Phase 01 — Project Setup & Design System
+
+## Overview
+- **Priority:** High
+- **Status:** ✅ Done
+- **Description:** Khởi tạo HTML/CSS/JS project, thiết lập design system (colors, typography, spacing, components cơ bản)
+
+## Implementation Steps
+
+1. Tạo project structure (HTML/CSS/JS)
+2. Tạo CSS design system (variables, reset, utilities)
+3. Setup fonts (Inter + JetBrains Mono via Google Fonts)
+4. Tạo Navbar
+5. Mở index.html trong browser kiểm tra
+
+## Project Structure
+
+```
+├── index.html
+├── css/
+│   ├── design-tokens.css
+│   ├── reset.css
+│   ├── globals.css
+│   ├── navbar.css
+│   ├── hero.css
+│   ├── about.css
+│   ├── how-it-works.css
+│   ├── impact.css
+│   ├── dev-stories.css
+│   ├── cta.css
+│   └── footer.css
+├── js/
+│   └── main.js
+└── assets/
+    └── images/
+```
+
+## Design Tokens
+
+```css
+/* Colors — Light Mode Tech/Modern */
+--bg-primary: #ffffff;
+--bg-secondary: #f8f9fc;
+--bg-card: rgba(255, 255, 255, 0.8);
+--text-primary: #1a1a2e;
+--text-secondary: #64648a;
+--accent-primary: #6366f1;    /* Indigo */
+--accent-secondary: #06b6d4;  /* Cyan */
+--accent-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+--glass-bg: rgba(255, 255, 255, 0.6);
+--glass-border: rgba(99, 102, 241, 0.15);
+
+/* Typography */
+--font-sans: 'Inter', sans-serif;
+--font-mono: 'JetBrains Mono', monospace;
+
+/* Spacing */
+--space-xs: 0.25rem;
+--space-sm: 0.5rem;
+--space-md: 1rem;
+--space-lg: 2rem;
+--space-xl: 4rem;
+--space-2xl: 8rem;
+
+/* Border Radius */
+--radius-sm: 0.5rem;
+--radius-md: 1rem;
+--radius-lg: 1.5rem;
+--radius-full: 9999px;
+```
+
+## Todo
+
+- [x] Tạo project structure
+- [x] Setup design tokens CSS
+- [x] Setup global styles + reset
+- [x] Configure Google Fonts
+- [x] Create Navbar
+- [x] Mở index.html trong browser OK
+</file>
+
+<file path="plans/260227-1625-nuoi-dev-website/phase-02-hero-about.md">
+# Phase 02 — Hero + About Sections
+
+## Overview
+- **Priority:** High
+- **Status:** ✅ Done
+- **Description:** Xây Hero section ấn tượng với animated background + About section giải thích mô hình
+
+## Implementation Steps
+
+### Hero Section
+1. CSS gradient animation background (chuyển màu indigo ↔ cyan liên tục)
+2. Headline lớn: "Nuôi Dev — Cùng nhau nuôi dưỡng tài năng công nghệ"
+3. Sub-headline mô tả ngắn
+4. CTA button gradient "Tham gia ngay" (`href="#"` placeholder)
+5. Stats mini: số dev, số sponsor, tổng hỗ trợ (hardcode data)
+
+### About Section
+1. Heading "Nuôi Dev là gì?"
+2. 2-column layout: text + illustration
+3. Giải thích mô hình bảo trợ dev
+4. Card highlights: Học tập, Mentoring, Cơ hội việc làm
+
+## Todo
+
+- [x] Hero background animation (CSS)
+- [x] Hero content + CTA
+- [x] Stats counter row
+- [x] About section layout
+- [x] About cards
+- [x] Responsive mobile
+</file>
+
+<file path="plans/260227-1625-nuoi-dev-website/phase-03-content-sections.md">
+# Phase 03 — How It Works + Impact + Dev Stories
+
+## Overview
+- **Priority:** Medium
+- **Status:** ✅ Done
+- **Description:** Các section nội dung chính: quy trình tham gia, tác động, và showcase dev
+
+## Implementation Steps
+
+### How It Works (3 bước)
+1. Step cards with icons + số thứ tự
+2. Bước 1: Đăng ký → Bước 2: Kết nối Dev → Bước 3: Hỗ trợ & Theo dõi
+3. Connecting line animation giữa các bước
+
+### Impact Section
+1. Counter animation (scroll-triggered via Intersection Observer)
+2. Metrics hardcode: Số dev, Số sponsor, Giờ mentoring, Dự án hoàn thành
+3. Grid layout responsive
+
+### Dev Stories
+1. Grid cards (không carousel — KISS)
+2. Mỗi card: Avatar placeholder, tên, story ngắn, skills (hardcode 3-4 cards)
+3. Glassmorphism card style
+
+## Todo
+
+- [x] How It Works 3-step layout
+- [x] Impact counter animation
+- [x] Dev Stories cards
+- [x] Responsive all sections
+</file>
+
+<file path="css/about.css">
+/* ============================================
+   About Section — Nuôi Dev
+   ============================================ */
+
+.about {
+  background: var(--bg-secondary);
+}
+
+/* 2-column layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* Text side */
+.about-text .section-label {
+  margin-bottom: var(--space-sm);
+}
+
+.about-text .section-title {
+  margin-bottom: var(--space-md);
+}
+
+.about-description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.about-description strong {
+  color: var(--text-primary);
+  font-weight: var(--font-semibold);
+}
+
+/* Illustration side — code-themed visual */
+.about-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-illustration {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4/3;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Grid pattern on illustration */
+.about-illustration::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Code bracket decoration */
+.about-illustration::after {
+  content: '{ }';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 4rem;
+  font-weight: var(--font-bold);
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.3em;
+}
+
+/* Highlight cards row */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.about-card {
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.about-card-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.about-card-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.about-card-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-visual {
+    order: -1;
+  }
+
+  .about-illustration {
+    max-width: 300px;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-card {
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--space-md);
+    align-items: start;
+  }
+
+  .about-card-icon {
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .about-card-title {
+    align-self: end;
+    margin-bottom: var(--space-xs);
+  }
+
+  .about-card-desc {
+    grid-column: 2;
+  }
+}
+</file>
+
+<file path="css/dev-stories.css">
+/* ============================================
+   Dev Stories Section — Nuôi Dev
+   ============================================ */
+
+.dev-stories {
+  background: var(--bg-primary);
+}
+
+/* 2-column card grid */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Story card */
+.story-card {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Header: avatar + info */
+.story-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Avatar — initials circle with gradient */
+.story-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--accent-gradient);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.story-name {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.story-role {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent-primary);
+  font-weight: var(--font-medium);
+}
+
+/* Story text — italic quote style */
+.story-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  position: relative;
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--glass-border);
+}
+
+/* Skill tags */
+.story-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: auto;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.skill-tag:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--accent-primary);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</file>
+
+<file path="css/hero.css">
+/* ============================================
+   Hero Section — Nuôi Dev
+   ============================================ */
+
+/* Animated gradient background */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    #6366f1 0%,
+    #818cf8 25%,
+    #06b6d4 50%,
+    #22d3ee 75%,
+    #6366f1 100%);
+  background-size: 300% 300%;
+  animation: heroGradient 12s ease infinite;
+}
+
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Decorative grid overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* Subtle radial glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Content wrapper */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+/* Headline */
+.hero-headline {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-extrabold);
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+}
+
+.hero-headline .highlight {
+  display: inline;
+  background: linear-gradient(135deg, #c7d2fe, #a5f3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sub-headline */
+.hero-subtitle {
+  font-size: var(--text-xl);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  max-width: 560px;
+}
+
+/* CTA group */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.hero-cta .btn-hero-primary {
+  background: #ffffff;
+  color: var(--accent-primary);
+  font-weight: var(--font-bold);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-base);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.hero-cta .btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta .btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-weight: var(--font-semibold);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  font-size: var(--text-base);
+  backdrop-filter: blur(8px);
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.hero-cta .btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Stats row */
+.hero-stats {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stat-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.hero-stat-label {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--space-xs);
+}
+
+/* Floating code snippet decoration */
+.hero-deco {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.hero-code-block {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.9);
+  min-width: 320px;
+  line-height: 1.8;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.hero-code-block .code-keyword {
+  color: #c7d2fe;
+}
+
+.hero-code-block .code-func {
+  color: #67e8f9;
+}
+
+.hero-code-block .code-string {
+  color: #86efac;
+}
+
+.hero-code-block .code-comment {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.hero-code-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: var(--space-md);
+}
+
+.hero-code-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.hero-code-dots span:nth-child(1) { background: #ef4444; }
+.hero-code-dots span:nth-child(2) { background: #facc15; }
+.hero-code-dots span:nth-child(3) { background: #22c55e; }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .hero-deco {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-xl);
+  }
+
+  .hero-headline {
+    font-size: var(--text-4xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-lg);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: var(--text-3xl);
+  }
+
+  .hero-cta .btn-hero-primary,
+  .hero-cta .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+</file>
+
+<file path="css/how-it-works.css">
+/* ============================================
+   How It Works Section — Nuôi Dev
+   ============================================ */
+
+.how-it-works {
+  background: var(--bg-primary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.section-header .section-subtitle {
+  margin-inline: auto;
+}
+
+/* Steps grid — horizontal 3 columns with connectors */
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+/* Individual step card */
+.step-card {
+  text-align: center;
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  position: relative;
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Step number — top-left badge */
+.step-number {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--accent-gradient);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Step icon */
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.step-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.step-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Connector lines between steps */
+.step-connector {
+  display: flex;
+  align-items: center;
+  padding-top: var(--space-xl);
+}
+
+.step-connector svg {
+  width: 100%;
+  height: 20px;
+  min-width: 40px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
+  .step-connector {
+    padding: var(--space-md) 0;
+    justify-content: center;
+  }
+
+  .step-connector svg {
+    width: 40px;
+    height: 40px;
+    transform: rotate(90deg);
+  }
+
+  .step-card {
+    padding: var(--space-lg);
+  }
+
+  .step-number {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+</file>
+
+<file path="css/impact.css">
+/* ============================================
+   Impact Section — Nuôi Dev
+   ============================================ */
+
+.impact {
+  background: var(--bg-secondary);
+}
+
+/* 4-column grid */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.impact-card {
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+
+.impact-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Counter number — big gradient text */
+.impact-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-extrabold);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.impact-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .impact-number {
+    font-size: var(--text-3xl);
+  }
+}
+</file>
+
+<file path="js/main.js">
+/* ============================================
+   Main JS — Nuôi Dev
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initSmoothScroll();
+  initScrollAnimations();
+  initImpactCounters();
+  initFooterYear();
+});
+
+/* --- Navbar scroll effect & mobile toggle --- */
+function initNavbar() {
+  const navbar = document.querySelector('.navbar');
+  const toggle = document.querySelector('.navbar-toggle');
+  const links = document.querySelector('.navbar-links');
+
+  // Add shadow on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile hamburger toggle
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      links.classList.toggle('open');
+    });
+
+    // Close menu when clicking a link
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        links.classList.remove('open');
+      });
+    });
+  }
+}
+
+/* --- Smooth scroll for internal navigation links --- */
+function initSmoothScroll() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const anchors = document.querySelectorAll('a[href^="#"]');
+
+  anchors.forEach(anchor => {
+    const hash = anchor.getAttribute('href');
+    if (!hash || hash === '#') return;
+
+    anchor.addEventListener('click', (event) => {
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
+
+      if (window.history?.replaceState) {
+        window.history.replaceState(null, '', hash);
+      }
+    });
+  });
+}
+
+/* --- Intersection Observer for fade-in animations --- */
+function initScrollAnimations() {
+  const elements = document.querySelectorAll('.fade-in-up');
+  if (elements.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  elements.forEach(el => observer.observe(el));
+}
+
+/* --- Impact counter animation (scroll-triggered) --- */
+function initImpactCounters() {
+  const counters = document.querySelectorAll('.impact-number');
+  if (counters.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  counters.forEach(el => observer.observe(el));
+}
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease-out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(eased * target);
+
+    el.textContent = current.toLocaleString('vi-VN') + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = target.toLocaleString('vi-VN') + suffix;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+/* --- Footer current year --- */
+function initFooterYear() {
+  const yearNode = document.getElementById('current-year');
+  if (!yearNode) return;
+  yearNode.textContent = String(new Date().getFullYear());
+}
+</file>
+
+<file path="plans/260227-1625-nuoi-dev-website/plan.md">
+---
+title: "Nuôi Dev - Website Landing Page"
+description: "Website bảo trợ developer, lấy cảm hứng từ nuoiem.com, phong cách tech/modern"
+status: completed
+priority: high
+effort: medium
+branch: master
+tags: [landing-page, nextjs, developer, sponsorship]
+created: 2026-02-27
+---
+
+# Nuôi Dev — Website Landing Page
+
+## Tổng quan
+
+Website cá nhân kêu gọi bảo trợ/hỗ trợ developer. Lấy cảm hứng mô hình nuoiem.com nhưng phong cách **tech/modern dark mode**.
+
+## Tech Stack
+
+- **Framework:** HTML/CSS/JS thuần (không framework, không build tools)
+- **Styling:** Vanilla CSS (CSS Variables)
+- **Font:** Inter + JetBrains Mono (Google Fonts)
+- **Serve:** Mở `index.html` trực tiếp trong browser
+- **Animation:** CSS gradient animation + Intersection Observer
+- **Data:** Hardcode (Dev Stories, Impact counters)
+- **CTA links:** Placeholder `#` (tính sau)
+
+## Design Direction
+
+- ☀️ Light mode — nền trắng/xám nhạt, accent indigo/cyan
+- 💎 Clean glassmorphism cards
+- ✨ Micro-animations, code-inspired visuals
+- 📱 Fully responsive
+
+## Phases
+
+| # | Phase | Status | File |
+|---|-------|--------|------|
+| 1 | Project Setup & Design System | ✅ Done | [phase-01](./phase-01-project-setup.md) |
+| 2 | Hero + About Sections | ✅ Done | [phase-02](./phase-02-hero-about.md) |
+| 3 | How It Works + Impact + Dev Stories | ✅ Done | [phase-03](./phase-03-content-sections.md) |
+| 4 | CTA + Footer + Polish | ✅ Done | [phase-04](./phase-04-cta-footer-polish.md) |
+
+## Sections (7 sections)
+
+1. **Hero** — Headline lớn, animated background, CTA "Tham gia ngay"
+2. **About** — "Nuôi Dev là gì?" giải thích mô hình
+3. **How It Works** — 3 bước tham gia (icon + text)
+4. **Impact** — Số liệu counter animation
+5. **Dev Stories** — Cards showcase dev được hỗ trợ
+6. **CTA** — Kêu gọi hành động cuối trang
+7. **Footer** — Contact, social links
+
+## Dependencies
+
+- Không có dependencies — chỉ cần browser
+
+## Validation Notes (2026-02-27)
+
+- ✅ Hardcode data cho Dev Stories & Impact counters
+- ✅ CTA buttons dùng `href="#"` placeholder
+- ✅ HTML/CSS/JS thuần, không framework (fix mâu thuẫn phase-01)
+- ✅ Mở index.html trực tiếp, không cần server
+- ✅ Hero background: CSS gradient animation (không particles)
+- ✅ Footer social: placeholder icons (GitHub, FB, Email, LinkedIn, X), điền link sau
+- ✅ Phase 04 shipped: CTA + footer + polish (smooth scroll, reveal animations, SEO/performance/mobile check)
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuôi Dev — Bảo trợ Developer Việt Nam</title>
+  <meta name="description" content="Nuôi Dev — Nền tảng bảo trợ và hỗ trợ developer Việt Nam phát triển sự nghiệp công nghệ.">
+  <meta name="keywords" content="Nuôi Dev, sponsor developer, mentoring, cộng đồng lập trình viên, developer Việt Nam">
+  <meta name="author" content="Nuôi Dev">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nuôi Dev — Bảo trợ Developer Việt Nam">
+  <meta property="og:description" content="Kết nối sponsor và developer Việt Nam để học tập, mentoring và phát triển sự nghiệp công nghệ.">
+  <meta property="og:url" content="https://nuoi.dev/">
+  <meta property="og:image" content="https://nuoi.dev/assets/images/og-image.png">
+  <meta property="og:image:alt" content="Nuoi Dev - Bao tro va mentoring cho developer Viet Nam">
+  <meta property="og:locale" content="vi_VN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nuôi Dev — Bảo trợ Developer Việt Nam">
+  <meta name="twitter:description" content="Cùng nhau nuôi dưỡng tài năng công nghệ Việt Nam qua bảo trợ và mentoring.">
+  <meta name="twitter:image" content="https://nuoi.dev/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="Nuoi Dev - Bao tro va mentoring cho developer Viet Nam">
+  <meta name="theme-color" content="#6366f1">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/how-it-works.css">
+  <link rel="stylesheet" href="css/impact.css">
+  <link rel="stylesheet" href="css/dev-stories.css">
+  <link rel="stylesheet" href="css/cta.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+  <!-- ====== Navbar ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="navbar-logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">nuôi.dev</span>
+        <span class="logo-bracket">}</span>
+      </a>
+
+      <div class="navbar-links" id="navbar-links">
+        <a href="#about">Giới thiệu</a>
+        <a href="#how-it-works">Cách thức</a>
+        <a href="#impact">Tác động</a>
+        <a href="#stories">Dev Stories</a>
+        <a href="#cta" class="btn btn-primary navbar-cta">Tham gia ngay</a>
+      </div>
+
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== Spacer for fixed navbar ====== -->
+  <div style="height: var(--navbar-height);"></div>
+
+  <!-- ====== Hero Section ====== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content fade-in-up">
+        <h1 class="hero-headline">
+          <span class="highlight">Nuôi Dev</span> — Cùng nhau nuôi dưỡng tài năng công nghệ
+        </h1>
+        <p class="hero-subtitle">
+          Nền tảng kết nối cộng đồng bảo trợ developer Việt Nam. Mỗi sự đóng góp là một bước tiến cho thế hệ lập trình viên mới.
+        </p>
+        <div class="hero-cta">
+          <a href="#cta" class="btn-hero-primary">🚀 Tham gia ngay</a>
+          <a href="#about" class="btn-hero-secondary">Tìm hiểu thêm ↓</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number">50+</span>
+            <span class="hero-stat-label">Dev được bảo trợ</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">120+</span>
+            <span class="hero-stat-label">Nhà bảo trợ</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">₫500M+</span>
+            <span class="hero-stat-label">Tổng hỗ trợ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating code decoration -->
+      <div class="hero-deco">
+        <div class="hero-code-block">
+          <div class="hero-code-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <code>
+            <span class="code-keyword">const</span> <span class="code-func">nuoiDev</span> = () =&gt; {<br>
+            &nbsp;&nbsp;<span class="code-comment">// Bảo trợ developer 💡</span><br>
+            &nbsp;&nbsp;<span class="code-keyword">return</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;learn: <span class="code-string">"mentoring"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;grow: <span class="code-string">"career"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;give: <span class="code-string">"community"</span><br>
+            &nbsp;&nbsp;};<br>
+            };
+          </code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== About Section ====== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <!-- 2-column: text + illustration -->
+      <div class="about-grid fade-in-up">
+        <div class="about-text">
+          <span class="section-label">// giới thiệu</span>
+          <h2 class="section-title">Nuôi Dev là gì?</h2>
+          <p class="about-description">
+            <strong>Nuôi Dev</strong> là nền tảng bảo trợ developer, kết nối những người có tâm huyết
+            với các lập trình viên trẻ đang cần được hỗ trợ. Chúng tôi tin rằng mỗi developer
+            đều xứng đáng có cơ hội phát triển — bất kể hoàn cảnh xuất phát.
+          </p>
+          <p class="about-description">
+            Thông qua mô hình bảo trợ, các sponsor sẽ đồng hành cùng dev trong hành trình
+            <strong>học tập</strong>, <strong>mentoring</strong> và tìm kiếm <strong>cơ hội việc làm</strong>
+            trong ngành công nghệ.
+          </p>
+        </div>
+        <div class="about-visual">
+          <div class="about-illustration"></div>
+        </div>
+      </div>
+
+      <!-- Highlight cards -->
+      <div class="about-cards">
+        <div class="about-card glass-card fade-in-up">
+          <div class="about-card-icon">📚</div>
+          <h3 class="about-card-title">Học tập</h3>
+          <p class="about-card-desc">
+            Hỗ trợ chi phí khóa học, tài liệu, công cụ phát triển — giúp dev tập trung vào việc học.
+          </p>
+        </div>
+        <div class="about-card glass-card fade-in-up">
+          <div class="about-card-icon">🧭</div>
+          <h3 class="about-card-title">Mentoring</h3>
+          <p class="about-card-desc">
+            Kết nối với mentor giàu kinh nghiệm, hướng dẫn career path và code review thực tế.
+          </p>
+        </div>
+        <div class="about-card glass-card fade-in-up">
+          <div class="about-card-icon">💼</div>
+          <h3 class="about-card-title">Cơ hội việc làm</h3>
+          <p class="about-card-desc">
+            Giới thiệu cơ hội internship và việc làm tại các công ty tech — cầu nối thực tế.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== How It Works Section ====== -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">// cách thức hoạt động</span>
+        <h2 class="section-title">Tham gia chỉ với 3 bước</h2>
+        <p class="section-subtitle">Quy trình đơn giản, minh bạch — ai cũng có thể đóng góp.</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card fade-in-up">
+          <div class="step-number">01</div>
+          <div class="step-icon">📝</div>
+          <h3 class="step-title">Đăng ký</h3>
+          <p class="step-desc">Dev hoặc Sponsor đăng ký qua form đơn giản. Chúng tôi sẽ xác minh hồ sơ trong 24 giờ.</p>
+        </div>
+
+        <!-- Connecting line -->
+        <div class="step-connector" aria-hidden="true">
+          <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+            <path d="M 0 10 Q 50 0, 100 10" stroke="url(#connector-grad)" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
+            <defs><linearGradient id="connector-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--accent-primary)"/>
+              <stop offset="100%" stop-color="var(--accent-secondary)"/>
+            </linearGradient></defs>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card fade-in-up">
+          <div class="step-number">02</div>
+          <div class="step-icon">🤝</div>
+          <h3 class="step-title">Kết nối Dev</h3>
+          <p class="step-desc">Sponsor được ghép với dev phù hợp dựa trên lĩnh vực, mục tiêu và nhu cầu phát triển.</p>
+        </div>
+
+        <!-- Connecting line -->
+        <div class="step-connector" aria-hidden="true">
+          <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+            <path d="M 0 10 Q 50 20, 100 10" stroke="url(#connector-grad2)" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
+            <defs><linearGradient id="connector-grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--accent-primary)"/>
+              <stop offset="100%" stop-color="var(--accent-secondary)"/>
+            </linearGradient></defs>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card fade-in-up">
+          <div class="step-number">03</div>
+          <div class="step-icon">🚀</div>
+          <h3 class="step-title">Hỗ trợ & Theo dõi</h3>
+          <p class="step-desc">Sponsor đồng hành cùng dev qua mentoring, hỗ trợ tài chính, và theo dõi tiến độ phát triển.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Impact Section ====== -->
+  <section class="section impact" id="impact">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">// tác động</span>
+        <h2 class="section-title">Con số nói lên tất cả</h2>
+        <p class="section-subtitle">Mỗi con số là một câu chuyện thành công của cộng đồng.</p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card glass-card fade-in-up">
+          <div class="impact-icon">👨‍💻</div>
+          <div class="impact-number" data-target="52">0</div>
+          <div class="impact-label">Dev được bảo trợ</div>
+        </div>
+        <div class="impact-card glass-card fade-in-up">
+          <div class="impact-icon">💎</div>
+          <div class="impact-number" data-target="128">0</div>
+          <div class="impact-label">Nhà bảo trợ</div>
+        </div>
+        <div class="impact-card glass-card fade-in-up">
+          <div class="impact-icon">⏱️</div>
+          <div class="impact-number" data-target="1200" data-suffix="+">0</div>
+          <div class="impact-label">Giờ mentoring</div>
+        </div>
+        <div class="impact-card glass-card fade-in-up">
+          <div class="impact-icon">🎯</div>
+          <div class="impact-number" data-target="35">0</div>
+          <div class="impact-label">Dự án hoàn thành</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Dev Stories Section ====== -->
+  <section class="section dev-stories" id="stories">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <span class="section-label">// dev stories</span>
+        <h2 class="section-title">Câu chuyện từ Dev</h2>
+        <p class="section-subtitle">Những developer đã và đang được cộng đồng đồng hành.</p>
+      </div>
+
+      <div class="stories-grid">
+        <!-- Story 1 -->
+        <div class="story-card glass-card fade-in-up">
+          <div class="story-header">
+            <div class="story-avatar">MT</div>
+            <div class="story-info">
+              <h3 class="story-name">Minh Trí</h3>
+              <span class="story-role">Frontend Developer</span>
+            </div>
+          </div>
+          <p class="story-text">"Nhờ Nuôi Dev, mình có cơ hội học React chuyên sâu và được mentor hướng dẫn. Sau 6 tháng, mình đã nhận được offer từ một startup công nghệ."</p>
+          <div class="story-skills">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Next.js</span>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-card glass-card fade-in-up">
+          <div class="story-header">
+            <div class="story-avatar">TL</div>
+            <div class="story-info">
+              <h3 class="story-name">Thanh Lan</h3>
+              <span class="story-role">Backend Developer</span>
+            </div>
+          </div>
+          <p class="story-text">"Từ một sinh viên chưa biết gì về backend, giờ mình đã tự tin xây dựng API và quản lý database. Cảm ơn các anh chị sponsor đã tin tưởng mình."</p>
+          <div class="story-skills">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-card glass-card fade-in-up">
+          <div class="story-header">
+            <div class="story-avatar">ĐH</div>
+            <div class="story-info">
+              <h3 class="story-name">Đức Huy</h3>
+              <span class="story-role">Mobile Developer</span>
+            </div>
+          </div>
+          <p class="story-text">"Chương trình mentoring đã giúp mình định hướng career path rõ ràng. Mình học Flutter và đã publish 2 app lên cả iOS và Android."</p>
+          <div class="story-skills">
+            <span class="skill-tag">Flutter</span>
+            <span class="skill-tag">Dart</span>
+            <span class="skill-tag">Firebase</span>
+          </div>
+        </div>
+
+        <!-- Story 4 -->
+        <div class="story-card glass-card fade-in-up">
+          <div class="story-header">
+            <div class="story-avatar">HN</div>
+            <div class="story-info">
+              <h3 class="story-name">Hồng Nhung</h3>
+              <span class="story-role">Full-stack Developer</span>
+            </div>
+          </div>
+          <p class="story-text">"Nuôi Dev không chỉ hỗ trợ tài chính mà còn tạo một cộng đồng thực sự. Mình đã học được rất nhiều từ code review và pair programming."</p>
+          <div class="story-skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">AWS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA Section ====== -->
+  <section class="section cta-section fade-in-up" id="cta">
+    <div class="container">
+      <div class="cta-content">
+        <span class="section-label cta-label">// đồng hành cùng cộng đồng</span>
+        <h2 class="cta-title">Sẵn sàng nuôi dưỡng thế hệ developer tiếp theo?</h2>
+        <p class="cta-subtitle">
+          Trở thành sponsor để hỗ trợ tài năng trẻ hoặc đăng ký làm dev để nhận mentoring, tài nguyên học tập và cơ hội nghề nghiệp.
+        </p>
+        <div class="cta-actions">
+          <a href="#" class="btn cta-button-primary" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt">Trở thành Sponsor</a>
+          <a href="#" class="btn cta-button-secondary" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt">Đăng ký Dev</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand fade-in-up">
+          <a href="#hero" class="footer-logo" aria-label="Nuôi Dev homepage">
+            <span class="logo-bracket">{</span>
+            <span class="logo-text">nuôi.dev</span>
+            <span class="logo-bracket">}</span>
+          </a>
+          <p class="footer-tagline">Nền tảng kết nối sponsor và developer Việt Nam cùng phát triển bền vững.</p>
+        </div>
+
+        <nav class="footer-nav fade-in-up" aria-label="Footer Navigation">
+          <a href="#about">Giới thiệu</a>
+          <a href="#how-it-works">Cách thức</a>
+          <a href="#impact">Tác động</a>
+          <a href="#stories">Dev Stories</a>
+          <a href="#cta">Sponsor</a>
+        </nav>
+
+        <div class="footer-social fade-in-up" aria-label="Social Links">
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="GitHub">GH</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="Facebook">FB</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="Email">@</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" data-placeholder="true" aria-disabled="true" tabindex="-1" title="Sắp ra mắt" aria-label="X">X</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="current-year">2026</span> Nuôi Dev. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+</file>
+
+</files>
