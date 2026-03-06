@@ -10,6 +10,11 @@ body {
   background-color: var(--bg-primary);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--navbar-height) + 12px);
+}
+
 /* Container */
 .container {
   width: 100%;
@@ -120,6 +125,11 @@ body {
   background: rgba(99, 102, 241, 0.05);
 }
 
+a[data-placeholder='true'] {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* Intersection Observer animation */
 .fade-in-up {
   opacity: 0;
@@ -151,5 +161,17 @@ body {
     --text-4xl: 1.75rem;
     --text-3xl: 1.25rem;
     --container-padding: var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
